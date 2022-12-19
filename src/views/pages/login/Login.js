@@ -71,15 +71,24 @@ const Login = () => {
                         onChange={getPassword}
                       />
                     </CInputGroup>
-                    <CRow>
+                    <CRow className="justify-content-between">
                       <CCol xs={6}>
                         <Link to={isLogin ? '/' : '*'}>
-                          <CButton color="secondary" className="px-4" onClick={login}>
+                          <CButton color="success" className="px-4" onClick={login}>
                             Login
                           </CButton>
                         </Link>
                       </CCol>
-                      <CCol xs={6} className="text-right">
+                      <CCol xs={6}>
+                        <Link to={`/createpassword`}>
+                          <CButton color="secondary" className="px-4">
+                            Sign Up
+                          </CButton>
+                        </Link>
+                      </CCol>
+                    </CRow>
+                    <CRow className="justify-content-center">
+                      <CCol className="text-right">
                         <CButton color="link" className="px-0">
                           Forgot password?
                         </CButton>

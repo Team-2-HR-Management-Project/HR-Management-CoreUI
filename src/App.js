@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 import Login from './views/pages/login/Login'
+import PasswordReset from './views/pages/passwordreset/PasswordReset'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -19,6 +20,7 @@ class App extends Component {
         <Suspense fallback={loading}>
           <Routes>
             <Route path="/" name="Login Page" element={<Login />} />
+            <Route path="/createpassword" name="New Password Page" element={<PasswordReset />} />
             <Route path="*" name="Home" element={<DefaultLayout />} />
           </Routes>
         </Suspense>

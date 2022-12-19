@@ -10,6 +10,7 @@ import {
   cilNotes,
   cilPencil,
   cilLockLocked,
+  cilMagnifyingGlass,
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -52,34 +53,27 @@ const _nav = [
         name: 'Add Employee',
         to: '/employee/add',
       },
+      {
+        component: CNavItem,
+        name: 'Employee List',
+        to: '/employee/emplyeelist',
+      },
     ],
   },
   {
     component: CNavGroup,
     name: 'Company',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilMagnifyingGlass} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Company List',
-        to: '/company/companytable',
+        to: '/company/companylist',
       },
       {
         component: CNavItem,
         name: 'Add Company',
         to: '/comapny/add',
-      },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Password Reset',
-    icon: <CIcon icon={cilLockLocked} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Password Reset',
-        to: '/password/reset',
       },
     ],
   },

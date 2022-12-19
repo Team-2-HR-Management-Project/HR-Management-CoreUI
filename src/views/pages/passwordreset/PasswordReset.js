@@ -60,14 +60,16 @@ const PasswordReset = () => {
                     />
                   </CInputGroup>
                   <div className="d-grid mb-2">
-                    <CButton color="success">Create Account</CButton>
+                    <CLink to={`/`}>
+                      <CButton color="success">Create Account</CButton>
+                    </CLink>
                   </div>
                   <div className="d-grid ">
                     <p color="success">
                       Dont want to change your password?{' '}
-                      <CLink to={`/login`} className="link-warning">
+                      <CButton to={`/`} className="link-warning" color="link" shape="rounded-0">
                         Login
-                      </CLink>
+                      </CButton>
                     </p>
                   </div>
                 </CForm>
