@@ -1,4 +1,5 @@
 import React from 'react'
+import PasswordReset from './views/pages/passwordreset/PasswordReset'
 
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const EmployeeTable = React.lazy(() => import('./views/pages/employeeTable/EmployeeTable'))
@@ -11,6 +12,8 @@ const routes = [
   { path: '/login', name: 'Login', element: Login },
   { path: '/employee/employeetable', name: 'Employee Table', element: EmployeeTable },
   { path: '/company/companytable', name: 'Company Table', element: CompanyTable },
+  { path: '/password/reset', name: 'Password Reset', element: PasswordReset },
+
   {
     path: '/employee/employeedetail/:id',
     name: 'Employee Detail',

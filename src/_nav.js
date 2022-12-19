@@ -9,6 +9,7 @@ import {
   cilDrop,
   cilNotes,
   cilPencil,
+  cilLockLocked,
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -67,6 +68,18 @@ const _nav = [
         component: CNavItem,
         name: 'Add Company',
         to: '/comapny/add',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Password Reset',
+    icon: <CIcon icon={cilLockLocked} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Password Reset',
+        to: '/password/reset',
       },
     ],
   },
