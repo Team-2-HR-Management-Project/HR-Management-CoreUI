@@ -51,7 +51,7 @@ const EmployeeDetail = () => {
       updateUser({
         authid: employee.authid,
         address: address == null ? employee.address : address,
-        photo: photo == null ? employee.photo : photo.split(',')[1],
+        photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,
       }),
     )
