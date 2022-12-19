@@ -61,7 +61,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Company List',
-        to: '/comapny/companytable',
+        to: '/company/companytable',
       },
       {
         component: CNavItem,
