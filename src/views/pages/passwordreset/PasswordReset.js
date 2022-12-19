@@ -64,7 +64,7 @@ const PasswordReset = () => {
                   </div>
                   <div className="d-grid ">
                     <p color="success">
-                      Dont want to change your password? <CLink to="/login">Login</CLink>
+                      Dont want to change your password? <CLink to={`/login`}>Login</CLink>
                     </p>
                   </div>
                 </CForm>
