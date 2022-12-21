@@ -51,7 +51,7 @@ const PasswordReset = () => {
   return (
     <>
       {loading ? <Loading /> : null}
-      <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+      <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
         <CContainer>
           <CRow className="justify-content-center">
             <CCol md={5}>
@@ -115,13 +115,14 @@ const PasswordReset = () => {
                         type="password"
                         id="floatingInputInvalid"
                         floatingLabel="Confirm Password"
+                        placeholder="Confirm Password"
                         autoComplete="new-password"
                         onChange={(event) => {
                           setPassword2(event.target.value)
                         }}
                       />
                     </CInputGroup>
-                    <CRow className="d-grid gap-2 d-md-block">
+                    <CRow className="d-grid gap-3 d-md-block ">
                       <Link to={isActivated ? '/login' : '/createpassword'}>
                         <CButton size="lg" color="success" onClick={createPassword}>
                           Create Password

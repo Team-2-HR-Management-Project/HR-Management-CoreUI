@@ -55,8 +55,8 @@ const Login = () => {
         <CRow className="justify-content-center">
           <CCol md={5}>
             <CCardGroup>
-              <CCard className="p-4">
-                <CCardBody>
+              <CCard className="mx-4">
+                <CCardBody className="p-4">
                   <CForm>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
