@@ -69,7 +69,7 @@ function ManagerTable() {
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
                   >
-                    Show Details & Edit
+                    Show Details
                   </CButton>
                 </Link>
               </CCardBody>
