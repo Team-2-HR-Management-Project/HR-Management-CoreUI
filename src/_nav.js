@@ -85,11 +85,6 @@ const _nav = [
         name: 'Company List',
         to: '/company/companylist',
       },
-      {
-        component: CNavItem,
-        name: 'Add Company',
-        to: '/company/add',
-      },
     ],
   },
 ]
