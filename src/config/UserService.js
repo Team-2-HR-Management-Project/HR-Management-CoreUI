@@ -8,6 +8,7 @@ const userService = {
   userupdate: RestApis.userService + '/user/update',
   userdeletebyid: RestApis.userService + '/user//delete/{authid}',
   userseedetail: RestApis.userService + '/user/seedetail/',
+  findallmanager: RestApis.userService + '/user/findallmanager',
 }
 
 export default userService

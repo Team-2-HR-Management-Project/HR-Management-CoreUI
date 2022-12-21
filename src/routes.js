@@ -8,6 +8,8 @@ const CompanyList = React.lazy(() => import('./views/pages/companyTable/CompanyL
 const PasswordReset = React.lazy(() => import('./views/pages/passwordreset/PasswordReset'))
 const EmployeeList = React.lazy(() => import('./views/pages/employeeTable/EmployeeList'))
 const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/ManagerDetail'))
+const ManagerTable = React.lazy(() => import('./views/pages/managerTable/ManagerTable'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/employee/employeetable', name: 'Employee Table', element: EmployeeTable },
@@ -16,6 +18,7 @@ const routes = [
 
   { path: '/createpassword', name: 'New Password Page', element: PasswordReset },
   { path: '/employee/emplyeelist', name: 'Employee List', element: EmployeeList },
+  { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
 
   {
     path: '/employee/employeedetail/:id',

@@ -5,6 +5,7 @@ import userService from '../../config/UserService'
 const initialStateUser = {
   token: '',
   user: {},
+  managerList: [],
   otherUserProfile: {},
   otherUserId: null,
   currentUserId: null,
@@ -44,6 +45,14 @@ export const userSeeDetail = createAsyncThunk('user/userseedetail', async (paylo
   } catch (error) {
     return error.response.data
   }
+})
+
+export const getAllManagers = createAsyncThunk('managerList/getAllManagers', async () => {
+  const result = await fetch(userService.findallmanager)
+    .then((response) => response.json())
+    .then((data) => data)
+
+  return result
 })
 
 // export const findallUser = createAsyncThunk(
@@ -212,6 +221,18 @@ const userSlice = createSlice({
     })
     build.addCase(updateUser.rejected, (state) => {
       state.isLoading = false
+    })
+    build.addCase(getAllManagers.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
+      state.managerList = action.payload
+      state.isLoading = false
+    })
+    build.addCase(getAllManagers.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(getAllManagers.pending, (state) => {
+      state.isLoading = true
     })
   },
 })

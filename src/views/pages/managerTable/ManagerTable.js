@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllManagers } from 'src/store/features/ManagerSlice'
+import { getAllManagers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 function ManagerTable() {
-  const managerList = useSelector((state) => state.user.data)
+  const managerList = useSelector((state) => state.user.managerList)
 
   const dispatch = useDispatch()
 

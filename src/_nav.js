@@ -61,7 +61,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Manager List',
-        to: '/manager/managerlist',
+        to: '/manager/managertable',
       },
       {
         component: CNavItem,
