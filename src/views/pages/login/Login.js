@@ -87,7 +87,7 @@ const Login = () => {
                       />
                     </CInputGroup>
                     <CRow className="d-grid gap-2 d-md-block">
-                      <Link to={isLogin ? '/' : null}>
+                      <Link to={isLogin ? '*' : null}>
                         <CButton size="lg" color="success" className="px-4" onClick={login}>
                           Login
                         </CButton>

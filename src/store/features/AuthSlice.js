@@ -178,7 +178,6 @@ const authSlice = createSlice({
       state.token = action.payload.token
       state.isAuthanticated = true
       console.log('logintoken...: ' + action.payload.token)
-      alert('successful')
       state.isLoading = false
     })
     build.addCase(fetchLogin.pending, (state, action) => {
