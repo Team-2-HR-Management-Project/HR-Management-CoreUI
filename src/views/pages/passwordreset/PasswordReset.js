@@ -54,7 +54,7 @@ const PasswordReset = () => {
       <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
         <CContainer>
           <CRow className="justify-content-center">
-            <CCol md={5} lg={5} xl={5}>
+            <CCol md={5}>
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
@@ -67,8 +67,10 @@ const PasswordReset = () => {
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput
-                        type="text"
-                        placeholder="Email"
+                        type="email"
+                        id="floatingInputInvalid"
+                        floatingLabel="Email addresss"
+                        placeholder="name@example.com"
                         autoComplete="email"
                         onChange={(event) => {
                           setEmail(event.target.value)
@@ -81,6 +83,8 @@ const PasswordReset = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="text"
+                        id="floatingInputInvalid"
+                        floatingLabel="Activation Code"
                         placeholder="Activation Code"
                         autoComplete="temp-password"
                         onChange={(event) => {
@@ -94,6 +98,8 @@ const PasswordReset = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="password"
+                        id="floatingInputInvalid"
+                        floatingLabel="Password"
                         placeholder="Password"
                         autoComplete="new-password"
                         onChange={(event) => {
@@ -107,28 +113,26 @@ const PasswordReset = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="password"
-                        placeholder="Repeat password"
+                        id="floatingInputInvalid"
+                        floatingLabel="Confirm Password"
                         autoComplete="new-password"
                         onChange={(event) => {
                           setPassword2(event.target.value)
                         }}
                       />
                     </CInputGroup>
-                    <CRow className="justify-content-start mb-2">
-                      <CCol>
-                        <Link to={isActivated ? '/login' : '/createpassword'}>
-                          <CButton color="success" onClick={createPassword}>
-                            Create Password
-                          </CButton>
-                        </Link>
-                      </CCol>
-                      <CCol>
-                        <Link to={'/login'}>
-                          <CButton color="secondary" variant="outline">
-                            Go back to Login
-                          </CButton>
-                        </Link>
-                      </CCol>
+                    <CRow className="d-grid gap-2 d-md-block">
+                      <Link to={isActivated ? '/login' : '/createpassword'}>
+                        <CButton size="lg" color="success" onClick={createPassword}>
+                          Create Password
+                        </CButton>
+                      </Link>
+
+                      <Link to={'/login'}>
+                        <CButton size="lg" color="secondary" variant="outline">
+                          Go back to Login
+                        </CButton>
+                      </Link>
                     </CRow>
                   </CForm>
                 </CCardBody>

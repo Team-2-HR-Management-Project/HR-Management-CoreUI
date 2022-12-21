@@ -53,7 +53,7 @@ const Login = () => {
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
-          <CCol md={4}>
+          <CCol md={5}>
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
@@ -64,7 +64,14 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Email" autoComplete="email" onChange={getEmail} />
+                      <CFormInput
+                        type="email"
+                        id="floatingInputInvalid"
+                        floatingLabel="Email addresss"
+                        placeholder="name@example.com"
+                        autoComplete="email"
+                        onChange={getEmail}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -72,26 +79,25 @@ const Login = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="password"
+                        id="floatingInputInvalid"
+                        floatingLabel="Password"
                         placeholder="Password"
                         autoComplete="current-password"
                         onChange={getPassword}
                       />
                     </CInputGroup>
-                    <CRow className="justify-content-between">
-                      <CCol xs={6}>
-                        <Link to={isLogin ? '/' : 'login'}>
-                          <CButton color="success" className="px-4" onClick={login}>
-                            Login
-                          </CButton>
-                        </Link>
-                      </CCol>
-                      <CCol xs={6}>
-                        <Link to={`/createpassword`}>
-                          <CButton color="secondary" className="px-4">
-                            Sign Up
-                          </CButton>
-                        </Link>
-                      </CCol>
+                    <CRow className="d-grid gap-2 d-md-block">
+                      <Link to={isLogin ? '/' : null}>
+                        <CButton size="lg" color="success" className="px-4" onClick={login}>
+                          Login
+                        </CButton>
+                      </Link>
+
+                      <Link to={`/createpassword`}>
+                        <CButton size="lg" color="secondary" className="px-4">
+                          Sign Up
+                        </CButton>
+                      </Link>
                     </CRow>
                     <CRow className="justify-content-center">
                       <CCol className="text-right">
