@@ -58,6 +58,16 @@ const _nav = [
         name: 'Employee List',
         to: '/employee/emplyeelist',
       },
+      {
+        component: CNavItem,
+        name: 'Manager List',
+        to: '/manager/managerlist',
+      },
+      {
+        component: CNavItem,
+        name: 'Add Manager',
+        to: '/manager/add',
+      },
     ],
   },
   {
@@ -73,7 +83,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Add Company',
-        to: '/comapny/add',
+        to: '/company/add',
       },
     ],
   },

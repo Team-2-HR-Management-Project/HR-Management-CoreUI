@@ -8,7 +8,7 @@ const CompanyTable = React.lazy(() => import('./views/pages/companyTable/Company
 const CompanyList = React.lazy(() => import('./views/pages/companyTable/CompanyList'))
 const PasswordReset = React.lazy(() => import('./views/pages/passwordreset/PasswordReset'))
 const EmployeeList = React.lazy(() => import('./views/pages/employeeTable/EmployeeList'))
-
+const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/ManagerDetail'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/login', name: 'Login', element: Login },
@@ -24,7 +24,12 @@ const routes = [
     name: 'Employee Detail',
     element: EmployeeDetail,
   },
+  {
+    path: '/manager/managerdetail/:id',
+    name: 'Manager Table',
+    element: ManagerDetail,
+  },
+
   { path: '/*', name: 'News', element: News },
 ]
-
 export default routes
