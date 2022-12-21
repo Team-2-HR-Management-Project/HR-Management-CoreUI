@@ -68,7 +68,7 @@ const ManagerList = () => {
                   </CCol>
                   <CCol xs="auto">
                     <CButton className="btn btn-secondary mb-3" type="button">
-                      <CIcon icon={cilUserFollow} />. Add New Manager
+                      <CIcon icon={cilUserFollow} /> Add New Manager
                     </CButton>
                   </CCol>
                 </CRow>
@@ -125,7 +125,7 @@ const ManagerList = () => {
                             className="container align-self-end"
                             style={{ backgroundColor: 'black' }}
                           >
-                            Show Details & Edit
+                            Show Details
                           </CButton>
                         </Link>
                       </CTableDataCell>

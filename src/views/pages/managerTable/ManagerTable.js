@@ -39,7 +39,7 @@ function ManagerTable() {
             </CCol>
             <CCol xs="auto">
               <CButton className="btn btn-secondary mb-3" type="button">
-                <CIcon icon={cilUserFollow} />. Add New Manager
+                <CIcon icon={cilUserFollow} /> Add New Manager
               </CButton>
             </CCol>
           </CRow>
