@@ -182,7 +182,6 @@ const userSlice = createSlice({
       state.otherUserId = action.payload
       state.isLoading = false
     })
-
     build.addCase(userSeeDetail.rejected, (state, action) => {
       state.error = action.payload
       state.isLoading = false
@@ -192,27 +191,27 @@ const userSlice = createSlice({
     })
 
     build.addCase(getAllUsers.pending, (state) => {
-      state.loading = true
+      state.isLoading = true
     })
     build.addCase(getAllUsers.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
       // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
       state.data = action.payload
-      state.loading = false
+      state.isLoading = false
     })
     build.addCase(getAllUsers.rejected, (state) => {
-      state.loading = false
+      state.isLoading = false
     })
     build.addCase(updateUser.pending, (state) => {
-      state.loading = true
+      state.isLoading = true
     })
     build.addCase(updateUser.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
       state.otherUserProfile = action.payload
-      state.loading = false
+      state.isLoading = false
     })
     build.addCase(updateUser.rejected, (state) => {
-      state.loading = false
+      state.isLoading = false
     })
   },
 })
