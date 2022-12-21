@@ -3,14 +3,14 @@ import { CFooter, CLink } from '@coreui/react'
 
 const AppFooter = () => {
   return (
-    <CFooter>
+    <CFooter color="black">
       <div>
-        <CLink href="https://coreui.io">CoreUI</CLink>
-        <span>&copy; 2021 creativeLabs.</span>
+        <CLink href="https://coreui.io">HR MANAGEMENT SYSTEM</CLink>
+        <span>&copy; 2022 creativeLabs.</span>
       </div>
       <div>
-        <span>Powered by</span>
-        <CLink href="https://coreui.io">CoreUI</CLink>
+        <span>Powered by: </span>
+        <span>Sinem İlkiz Sezer Çağdaş Saad</span>
       </div>
     </CFooter>
   )

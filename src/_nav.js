@@ -45,28 +45,33 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'Employees List',
+        name: 'User Card',
         to: '/employee/employeetable',
       },
       {
         component: CNavItem,
-        name: 'Add Employee',
-        to: '/employee/add',
-      },
-      {
-        component: CNavItem,
-        name: 'Employee List',
+        name: 'User List',
         to: '/employee/emplyeelist',
       },
       {
         component: CNavItem,
-        name: 'Manager List',
+        name: 'Admin Card',
+        to: '*',
+      },
+      {
+        component: CNavItem,
+        name: 'Admin List',
+        to: '*',
+      },
+      {
+        component: CNavItem,
+        name: 'Manager Card',
         to: '/manager/managertable',
       },
       {
         component: CNavItem,
-        name: 'Add Manager',
-        to: '/manager/add',
+        name: 'Manager List',
+        to: '/manager/managerlist',
       },
     ],
   },

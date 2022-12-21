@@ -33,7 +33,7 @@ import { managerSeeDetail } from 'src/store/features/ManagerSlice'
 const EmployeeDetail = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const manager = useSelector((state) => state.manager.otherManager)
+  const manager = useSelector((state) => state.user.otherUserProfile)
   const [phone, setPhone] = useState(manager?.phone)
   const [address, setAddress] = useState(manager?.address)
   const [photo, setPhoto] = useState(manager?.photo)
@@ -118,55 +118,61 @@ const EmployeeDetail = () => {
               </CRow>
             </CRow>
           </CCol>
-          <CCol sm={8} className="detailfeed mb-5">
+
+          <CCol sm={4} className="detailfeed mb-5">
             <CForm className="m-5">
               <CRow className=" mb-4 ">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Name</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput type="text" placeholder={manager?.name} disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Middle Name</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput type="text" placeholder={manager?.middleName} disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Surname</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput type="text" placeholder={manager?.surname} disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Second Surname</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput type="text" placeholder={manager?.secondSurname} disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel htmlFor="inputEmail3" className="col-lg-2 col-form-label">
                     Email
                   </CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput type="email" placeholder={manager?.email} disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Address</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput
                     placeholder={manager?.address == null ? 'empty' : manager.address}
                     type="text"
@@ -174,11 +180,12 @@ const EmployeeDetail = () => {
                   />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Phone</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput
                     placeholder={manager?.phone == null ? 'empty' : manager.phone}
                     type="text"
@@ -186,35 +193,43 @@ const EmployeeDetail = () => {
                   />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Department</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.department} type="text" disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Profession</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.profession} type="text" disabled />
                 </CCol>
               </CRow>
+            </CForm>
+          </CCol>
+
+          <CCol sm={4}>
+            <CForm className="m-5">
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Date of Birth</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.dob} type="text" disabled />
                 </CCol>
               </CRow>
+
               <CRow className=" mb-4">
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Place of Birth</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.placeOfBirth} type="text" disabled />
                 </CCol>
               </CRow>
@@ -222,7 +237,7 @@ const EmployeeDetail = () => {
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">ID Number</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.identityNumber} type="text" disabled />
                 </CCol>
               </CRow>
@@ -230,7 +245,7 @@ const EmployeeDetail = () => {
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Join Date</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.joinDate} type="text" disabled />
                 </CCol>
               </CRow>
@@ -238,7 +253,7 @@ const EmployeeDetail = () => {
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Resign Date</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.resignDate} type="text" disabled />
                 </CCol>
               </CRow>
@@ -246,15 +261,15 @@ const EmployeeDetail = () => {
                 <CCol sm={3}>
                   <CFormLabel className="col col-form-label">Status</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.status} type="text" disabled />
                 </CCol>
               </CRow>
-              <CRow className=" mb-4">
+              <CRow className=" mb-4 ">
                 <CCol sm={3}>
-                  <CFormLabel className="col col-form-label">Company</CFormLabel>
+                  <CFormLabel className="col col-form-label ">Company</CFormLabel>
                 </CCol>
-                <CCol sm={9}>
+                <CCol sm={7} className=" mx-3 ">
                   <CFormInput placeholder={manager?.company} type="text" disabled />
                 </CCol>
               </CRow>
