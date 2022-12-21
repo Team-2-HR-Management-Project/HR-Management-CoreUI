@@ -32,13 +32,19 @@ const Login = () => {
     setPassword(evt.target.value)
   }
 
-  const login = () => {
-    dispatch(
-      fetchLogin({
-        email: email,
-        password: password,
-      }),
-    )
+  const login = async () => {
+    if (email === '' || password === '') {
+      alert('Please enter your email and password!')
+    } else if (password.length < 8 && password.length > 32) {
+      alert('Password can be between 8 to 32 characters!')
+    } else {
+      dispatch(
+        fetchLogin({
+          email: email,
+          password: password,
+        }),
+      )
+    }
   }
 
   React.useEffect(() => {}, [isLogin])
@@ -73,7 +79,7 @@ const Login = () => {
                     </CInputGroup>
                     <CRow className="justify-content-between">
                       <CCol xs={6}>
-                        <Link to={isLogin ? '/' : '*'}>
+                        <Link to={isLogin ? '/' : 'login'}>
                           <CButton color="success" className="px-4" onClick={login}>
                             Login
                           </CButton>

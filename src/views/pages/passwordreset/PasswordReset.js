@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -13,72 +13,131 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilLockLocked } from '@coreui/icons'
-
+import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
+import Loading from 'src/components/loading/Loading'
 const PasswordReset = () => {
-  return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
-      <CContainer>
-        <CRow className="justify-content-center">
-          <CCol md={9} lg={7} xl={6}>
-            <CCard className="mx-4">
-              <CCardBody className="p-4">
-                <CForm>
-                  <h1>New Password</h1>
-                  <p className="text-medium-emphasis">
-                    You can login to your account by setting a new password.
-                  </p>
+  const [password1, setPassword1] = useState('')
+  const [password2, setPassword2] = useState('')
+  const [email, setEmail] = useState('')
+  const [temppassword, setTemppassword] = useState('')
 
-                  <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilLockLocked} />
-                    </CInputGroupText>
-                    <CFormInput
-                      type="password"
-                      placeholder="TempPassword"
-                      autoComplete="temp-password"
-                    />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilLockLocked} />
-                    </CInputGroupText>
-                    <CFormInput
-                      type="password"
-                      placeholder="Password"
-                      autoComplete="new-password"
-                    />
-                  </CInputGroup>
-                  <CInputGroup className="mb-4">
-                    <CInputGroupText>
-                      <CIcon icon={cilLockLocked} />
-                    </CInputGroupText>
-                    <CFormInput
-                      type="password"
-                      placeholder="Repeat password"
-                      autoComplete="new-password"
-                    />
-                  </CInputGroup>
-                  <div className="d-grid mb-2">
-                    <CLink to={`/`}>
-                      <CButton color="success">Create Account</CButton>
-                    </CLink>
-                  </div>
-                  <div className="d-grid ">
-                    <p color="success">
-                      Dont want to change your password?{' '}
-                      <CButton to={`/`} className="link-warning" color="link" shape="rounded-0">
-                        Login
-                      </CButton>
+  const dispatch = useDispatch()
+  const loading = useSelector((state) => state.auth.isLoading)
+  const isActivated = useSelector((state) => state.auth.isActivated)
+  const createPassword = async () => {
+    if (password1 === '') {
+      alert('Please enter any password!')
+    } else if (password1.length < 8 && password1.length > 32) {
+      alert('Password can be between 8 to 32 characters!')
+    } else if (password1 !== password2) {
+      alert('Passwords do not macth!')
+    } else {
+      dispatch(
+        fetchCreatePassword({
+          email: email,
+          temppassword: temppassword,
+          password: password1,
+        }),
+      )
+    }
+    console.log(email)
+  }
+
+  React.useEffect(() => {}, [isActivated])
+
+  return (
+    <>
+      {loading ? <Loading /> : null}
+      <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+        <CContainer>
+          <CRow className="justify-content-center">
+            <CCol md={5} lg={5} xl={5}>
+              <CCard className="mx-4">
+                <CCardBody className="p-4">
+                  <CForm>
+                    <h1>New Password</h1>
+                    <p className="text-medium-emphasis">
+                      You can activate to your account by setting a new password.
                     </p>
-                  </div>
-                </CForm>
-              </CCardBody>
-            </CCard>
-          </CCol>
-        </CRow>
-      </CContainer>
-    </div>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilUser} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="text"
+                        placeholder="Email"
+                        autoComplete="email"
+                        onChange={(event) => {
+                          setEmail(event.target.value)
+                        }}
+                      />
+                    </CInputGroup>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="text"
+                        placeholder="Activation Code"
+                        autoComplete="temp-password"
+                        onChange={(event) => {
+                          setTemppassword(event.target.value)
+                        }}
+                      />
+                    </CInputGroup>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="new-password"
+                        onChange={(event) => {
+                          setPassword1(event.target.value)
+                        }}
+                      />
+                    </CInputGroup>
+                    <CInputGroup className="mb-4">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="password"
+                        placeholder="Repeat password"
+                        autoComplete="new-password"
+                        onChange={(event) => {
+                          setPassword2(event.target.value)
+                        }}
+                      />
+                    </CInputGroup>
+                    <CRow className="justify-content-start mb-2">
+                      <CCol>
+                        <Link to={isActivated ? '/login' : '/createpassword'}>
+                          <CButton color="success" onClick={createPassword}>
+                            Create Password
+                          </CButton>
+                        </Link>
+                      </CCol>
+                      <CCol>
+                        <Link to={'/login'}>
+                          <CButton color="secondary" variant="outline">
+                            Go back to Login
+                          </CButton>
+                        </Link>
+                      </CCol>
+                    </CRow>
+                  </CForm>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CContainer>
+      </div>
+    </>
   )
 }
 

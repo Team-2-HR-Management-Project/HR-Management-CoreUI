@@ -20,6 +20,7 @@ class App extends Component {
         <Suspense fallback={loading}>
           <Routes>
             <Route path="/" name="Login Page" element={<Login />} />
+            <Route path="/login" name="Login Page" element={<Login />} />
             <Route path="/createpassword" name="New Password Page" element={<PasswordReset />} />
             <Route path="*" name="Home" element={<DefaultLayout />} />
           </Routes>
