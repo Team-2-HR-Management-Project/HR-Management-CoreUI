@@ -67,9 +67,9 @@ const EmployeeList = () => {
                     <h5 className="card-title fs-4 fw-semibold m-2">Users</h5>
                   </CCol>
                   <CCol xs="auto">
-                    <CButton className="btn btn-secondary mb-3" type="button">
+                    {/* <CButton className="btn btn-secondary mb-3" type="button">
                       <CIcon icon={cilUserFollow} /> Add New User
-                    </CButton>
+                    </CButton> */}
                   </CCol>
                 </CRow>
               </CContainer>

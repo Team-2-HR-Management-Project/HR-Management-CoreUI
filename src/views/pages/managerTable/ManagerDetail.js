@@ -214,7 +214,7 @@ const EmployeeDetail = () => {
             </CForm>
           </CCol>
 
-          <CCol sm={4}>
+          <CCol sm={4} className="detailfeed mb-5">
             <CForm className="m-5">
               <CRow className=" mb-4">
                 <CCol sm={3}>
