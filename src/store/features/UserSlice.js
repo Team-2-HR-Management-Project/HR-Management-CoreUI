@@ -161,6 +161,7 @@ export const updateUser = createAsyncThunk(
     }
   },
 )
+export const fetchCreateManager = createAsyncThunk()
 
 const userSlice = createSlice({
   name: 'user',

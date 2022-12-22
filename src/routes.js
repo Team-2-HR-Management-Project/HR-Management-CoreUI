@@ -11,7 +11,7 @@ const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/Manage
 const ManagerTable = React.lazy(() => import('./views/pages/managerTable/ManagerTable'))
 const ManagerList = React.lazy(() => import('./views/pages/managerTable/ManagerList'))
 const SaveUser = React.lazy(() => import('./views/pages/saveUser/SaveUser'))
-
+const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/employee/employeetable', name: 'Employee Table', element: EmployeeTable },
@@ -22,6 +22,7 @@ const routes = [
   { path: '/employee/emplyeelist', name: 'Employee List', element: EmployeeList },
   { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
   { path: '/manager/managerlist', name: 'Manager List', element: ManagerList },
+  { path: '/page500', name: 'page 500', element: Page500 },
 
   {
     path: '/employee/employeedetail/:id',
