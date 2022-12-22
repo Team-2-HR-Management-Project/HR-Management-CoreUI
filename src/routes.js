@@ -5,6 +5,7 @@ const EmployeeDetail = React.lazy(() => import('./views/pages/employeeDetail/Emp
 const News = React.lazy(() => import('./views/pages/news/News'))
 const CompanyTable = React.lazy(() => import('./views/pages/companyTable/CompanyTable'))
 const CompanyList = React.lazy(() => import('./views/pages/companyTable/CompanyList'))
+const CompanyDetail = React.lazy(() => import('./views/pages/companyDetail/CompanyDetail'))
 const PasswordReset = React.lazy(() => import('./views/pages/passwordreset/PasswordReset'))
 const EmployeeList = React.lazy(() => import('./views/pages/employeeTable/EmployeeList'))
 const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/ManagerDetail'))
@@ -17,7 +18,7 @@ const routes = [
   { path: '/employee/employeetable', name: 'Employee Table', element: EmployeeTable },
   { path: '/company/companytable', name: 'Company Table', element: CompanyTable },
   { path: '/company/companylist', name: 'Company List', element: CompanyList },
-
+  { path: '/company/companydetail/:id', name: 'Company Detail', element: CompanyDetail },
   { path: '/createpassword', name: 'New Password Page', element: PasswordReset },
   { path: '/employee/emplyeelist', name: 'Employee List', element: EmployeeList },
   { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
