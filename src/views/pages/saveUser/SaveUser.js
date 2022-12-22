@@ -76,7 +76,7 @@ const SaveUser = () => {
                         type="text"
                         id="floatingInputInvalid"
                         floatingLabel="Name"
-                        placeholder=""
+                        placeholder="Name"
                         autoComplete="name"
                         onChange={(event) => {
                           setName(event.target.value)
