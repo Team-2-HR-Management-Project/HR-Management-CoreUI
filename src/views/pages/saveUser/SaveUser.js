@@ -11,14 +11,16 @@ import {
   CInputGroupText,
   CLink,
   CRow,
+  CFormSelect,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
-import { fetchCreateManager } from 'src/store/features/UserSlice'
 import Loading from 'src/components/loading/Loading'
+import { findAllCompany } from 'src/store/features/companySlice'
+
 const SaveUser = () => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
@@ -27,8 +29,12 @@ const SaveUser = () => {
   const [company, setCompany] = useState('')
 
   const dispatch = useDispatch()
-  const loading = useSelector((state) => state.auth.isLoading)
-  const isActivated = useSelector((state) => state.auth.isActivated)
+  const data = useSelector((state) => state.company.companyList)
+  console.log('data' + data)
+  const getCompanies = () => {
+    dispatch(findAllCompany())
+  }
+
   const createManager = async () => {
     if (name === '') {
       alert('Please enter any name!')
@@ -42,7 +48,7 @@ const SaveUser = () => {
       alert('Please enter any company!')
     } else {
       dispatch(
-        fetchCreateManager({
+        fecthRegisterbymail({
           name: name,
           surname: surname,
           email: email,
@@ -53,12 +59,12 @@ const SaveUser = () => {
     }
     console.log(email)
   }
-
-  React.useEffect(() => {}, [isActivated])
+  useEffect(() => {
+    getCompanies()
+  }, [])
 
   return (
     <>
-      {loading ? <Loading /> : null}
       <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
         <CContainer>
           <CRow className="justify-content-center">
@@ -132,20 +138,17 @@ const SaveUser = () => {
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
-                      <CFormInput
-                        type="text"
-                        id="floatingInputInvalid"
-                        floatingLabel="Company"
-                        placeholder="Company"
-                        autoComplete="company"
-                        onChange={(event) => {
-                          setCompany(event.target.value)
-                        }}
+                      <CFormSelect
+                        aria-label="Default select example"
+                        options={[
+                          'Company List',
+                          data.map((type, index) => ({ label: type?.name, value: index })),
+                        ]}
                       />
                     </CInputGroup>
 
                     <CRow className="d-grid gap-3 d-md-block ">
-                      <Link to={isActivated ? '/manager/managerlist' : '/page500'}>
+                      <Link to={'/manager/managerlist'}>
                         <CButton size="lg" color="success" onClick={createManager}>
                           Create Manager
                         </CButton>

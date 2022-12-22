@@ -27,9 +27,7 @@ function CompanyTable() {
             src={type.logo == null ? require('../../../assets/person/user.webp') : type.logo}
           />
           <CCardBody>
-            <CCardTitle className="text-center">
-              {type?.name} 
-            </CCardTitle>
+            <CCardTitle className="text-center">{type?.name}</CCardTitle>
             <CCardText className="text-center">
               {type?.title === null ? '---' : type.title}
             </CCardText>
