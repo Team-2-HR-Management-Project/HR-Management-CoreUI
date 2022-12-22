@@ -26,38 +26,40 @@ const SaveUser = () => {
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [company, setCompany] = useState('')
+  const [companyid, setCompanyid] = useState(1)
 
-  const dispatch = useDispatch()
   const data = useSelector((state) => state.company.companyList)
-  console.log('data' + data)
+  const dispatch = useDispatch()
+
+  console.log(data)
   const getCompanies = () => {
     dispatch(findAllCompany())
   }
 
   const createManager = async () => {
-    if (name === '') {
-      alert('Please enter any name!')
-    } else if (surname === '') {
-      alert('Please enter any surname!')
-    } else if (email === '') {
-      alert('Please enter any email!')
-    } else if (phone === '') {
-      alert('Please enter any phone!')
-    } else if (company === '') {
-      alert('Please enter any company!')
-    } else {
+    // if (name === '') {
+    //   alert('Please enter any name!')
+    // } else if (surname === '') {
+    //   alert('Please enter any surname!')
+    // } else if (email === '') {
+    //   alert('Please enter any email!')
+    // } else if (phone === '') {
+    //   alert('Please enter any phone!')
+    // // } else if (companyid === '') {
+    // //   alert('Please enter any company!')
+    // } else {
       dispatch(
         fecthRegisterbymail({
           name: name,
           surname: surname,
           email: email,
           phone: phone,
-          company: company,
+          companyid: 1,
         }),
       )
-    }
+    // }
     console.log(email)
+    console.log(companyid)
   }
   useEffect(() => {
     getCompanies()
@@ -138,15 +140,15 @@ const SaveUser = () => {
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
-                      <CFormSelect
-                        aria-label="Default select example"
-                        options={[
-                          'Company List',
-                          data.map((type, index) => ({ label: type?.name, value: index })),
-                        ]}
-                      />
+                      <CFormSelect aria-label="Default select example">
+                        <option>Open this select menu</option>
+                      {data.map((type, index) => (                        
+                        <option key={index} onChange={(event) => {
+                          setCompanyid(event.target.value.id)
+                        }}>{type.name}</option>
+                      ))}
+                      </CFormSelect>
                     </CInputGroup>
-
                     <CRow className="d-grid gap-3 d-md-block ">
                       <Link to={'/manager/managerlist'}>
                         <CButton size="lg" color="success" onClick={createManager}>
