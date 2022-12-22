@@ -25,7 +25,7 @@ import {
   CContainer,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBriefcase } from '@coreui/icons'
+import { cilBriefcase, cilLibraryAdd } from '@coreui/icons'
 import {
   cibCcAmex,
   cibCcApplePay,
@@ -68,9 +68,11 @@ const CompanyList = () => {
                     <h5 className="card-title fs-4 fw-semibold m-2">Companies</h5>
                   </CCol>
                   <CCol xs="auto">
-                    {/* <CButton className="btn btn-secondary mb-3" type="button">
-                      <CIcon icon={cilUserFollow} /> Add New Company
-                    </CButton> */}
+                    <Link to={`/savecompany`} className="col align-self-end">
+                      <CButton className="btn btn-secondary mb-3" type="button">
+                        <CIcon icon={cilLibraryAdd} /> Add New Company
+                      </CButton>
+                    </Link>
                   </CCol>
                 </CRow>
               </CContainer>

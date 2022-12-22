@@ -12,6 +12,7 @@ const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/Manage
 const ManagerTable = React.lazy(() => import('./views/pages/managerTable/ManagerTable'))
 const ManagerList = React.lazy(() => import('./views/pages/managerTable/ManagerList'))
 const SaveUser = React.lazy(() => import('./views/pages/saveUser/SaveUser'))
+const SaveCompany = React.lazy(() => import('./views/pages/saveCompany/SaveCompany'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -36,7 +37,7 @@ const routes = [
     element: ManagerDetail,
   },
   { path: '/saveuser', name: 'Save User', element: SaveUser },
-
+  { path: '/saveCompany', name: 'Save Company', element: SaveCompany },
   { path: '/*', name: 'News', element: News },
 ]
 export default routes
