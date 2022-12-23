@@ -21,7 +21,7 @@ import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/Aut
 import Loading from 'src/components/loading/Loading'
 import { findAllCompany } from 'src/store/features/companySlice'
 
-const SaveUser = () => {
+const SaveManager = () => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
@@ -179,4 +179,4 @@ const SaveUser = () => {
   )
 }
 
-export default SaveUser
+export default SaveManager
