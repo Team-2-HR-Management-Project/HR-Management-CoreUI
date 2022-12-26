@@ -97,7 +97,7 @@ const EmployeeDetail = () => {
                 </CInputGroup>
               </CRow>
               <CRow className="m-3 justify-content-center align-self-end">
-                <Link to={`/manager/managerdetail/${id}`} className="col align-self-end">
+                <Link to={`/employee/employeedetail/${id}`} className="col align-self-end">
                   <CButton
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
