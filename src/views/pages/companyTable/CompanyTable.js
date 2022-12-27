@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findAllCompany } from 'src/store/features/companySlice'
 import { Link } from 'react-router-dom'
-import {
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-  CContainer,
-} from '@coreui/react'
+import { CCol, CRow, CContainer } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBriefcase, cilLibraryAdd } from '@coreui/icons'
+import { cilLibraryAdd } from '@coreui/icons'
 function CompanyTable() {
   const data = useSelector((state) => state.company.companyList)
 

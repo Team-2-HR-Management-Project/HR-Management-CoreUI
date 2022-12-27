@@ -1,25 +1,11 @@
 import {
-  CCard,
-  CCardImage,
-  CCardBody,
-  CCardTitle,
-  CCardText,
-  CListGroup,
-  /* CListGroupItem, */
-  CTable,
   CImage,
   CForm,
   CFormInput,
-  CTableRow,
-  CTableHeaderCell,
   CInputGroup,
   CInputGroupText,
-  CTableBody,
-  CTableDataCell,
   CRow,
   CCol,
-  CFormSelect,
-  CFormCheck,
   CButton,
   CFormLabel,
   CContainer,
@@ -36,15 +22,18 @@ const CompanyDetail = () => {
   const [phone, setPhone] = useState(company?.phone)
   const [address, setAddress] = useState(company?.address)
   const [logo, setLogo] = useState(company?.logo)
+  const [dateOfContract, setDateOfContract] = useState(company?.dateOfContract)
+  const [contractExpiryDate, setContractExpiryDate] = useState(company?.contractExpiryDate)
+  const [numberOfEmployees, setNumberOfEmployees] = useState(company?.numberOfEmployees)
 
-  // const onChangePhoto = (event) => {
-  //   const file = event.target.files[0]
-  //   const fileReader = new FileReader()
-  //   fileReader.onloadend = () => {
-  //     setPhoto(fileReader.result)
-  //   }
-  //   fileReader.readAsDataURL(file)
-  // }
+  const onChangePhoto = (event) => {
+    const file = event.target.files[0]
+    const fileReader = new FileReader()
+    fileReader.onloadend = () => {
+      setLogo(fileReader.result)
+    }
+    fileReader.readAsDataURL(file)
+  }
 
   const update = () => {
     dispatch(
@@ -53,6 +42,11 @@ const CompanyDetail = () => {
         address: address == null ? company.address : address,
         logo: logo == null ? company.logo : logo,
         phone: phone == null ? company.phone : phone,
+        dateOfContract: dateOfContract == null ? company.dateOfContract : dateOfContract,
+        contractExpiryDate:
+          contractExpiryDate == null ? company.contractExpiryDate : contractExpiryDate,
+        numberOfEmployees:
+          numberOfEmployees == null ? company.numberOfEmployees : numberOfEmployees,
       }),
     )
   }
@@ -82,7 +76,7 @@ const CompanyDetail = () => {
                 </div>
               </CRow>
               <CRow className="justify-content-center mt-3">
-                {/* <CInputGroup className="mb-3">
+                <CInputGroup className="mb-3">
                   <CFormInput
                     type="file"
                     id="inputGroupFile02"
@@ -94,7 +88,7 @@ const CompanyDetail = () => {
                     htmlFor="inputGroupFile02"
                     placeholder="Fotoğraf Seçiniz"
                   ></CInputGroupText>
-                </CInputGroup> */}
+                </CInputGroup>
               </CRow>
               <CRow className="m-3 justify-content-center align-self-end">
                 <Link to={`/company/companydetail/${id}`} className="col align-self-end">
@@ -166,7 +160,11 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Address</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.address} type="text" disabled />
+                  <CFormInput
+                    placeholder={company?.address == null ? 'empty' : company.address}
+                    type="text"
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -174,7 +172,11 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Phone</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.phone} type="text" disabled />
+                  <CFormInput
+                    placeholder={company?.phone == null ? 'empty' : company.phone}
+                    type="text"
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -182,7 +184,13 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Number Of Employees</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.numberOfEmployees} type="text" disabled />
+                  <CFormInput
+                    placeholder={
+                      company?.numberOfEmployees == null ? 'empty' : company.numberOfEmployees
+                    }
+                    type="text"
+                    onChange={(e) => setNumberOfEmployees(e.target.value)}
+                  />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -190,7 +198,7 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Date of Establishment</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.dateOfEstablishment} type="text" disabled />
+                  <CFormInput placeholder={company?.dateOfEstablishment} type="text" />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -198,7 +206,11 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Date of Contract</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.dateOfContract} type="text" disabled />
+                  <CFormInput
+                    placeholder={company?.dateOfContract == null ? 'empty' : company.dateOfContract}
+                    type="text"
+                    onChange={(e) => setDateOfContract(e.target.value)}
+                  />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -206,7 +218,13 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Contract Expiry Date</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.contractExpiryDate} type="text" disabled />
+                  <CFormInput
+                    placeholder={
+                      company?.contractExpiryDate == null ? 'empty' : company.contractExpiryDate
+                    }
+                    type="text"
+                    onChange={(e) => setContractExpiryDate(e.target.value)}
+                  />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -214,7 +232,7 @@ const CompanyDetail = () => {
                   <CFormLabel className="col col-form-label">Status</CFormLabel>
                 </CCol>
                 <CCol sm={9}>
-                  <CFormInput placeholder={company?.status} type="text" disabled />
+                  <CFormInput placeholder={company?.status} type="text" />
                 </CCol>
               </CRow>
             </CForm>
