@@ -3,7 +3,20 @@ import { CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@c
 import { useSelector, useDispatch } from 'react-redux'
 import { findAllCompany } from 'src/store/features/companySlice'
 import { Link } from 'react-router-dom'
-
+import {
+  CCol,
+  CProgress,
+  CRow,
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+  CContainer,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilBriefcase, cilLibraryAdd } from '@coreui/icons'
 function CompanyTable() {
   const data = useSelector((state) => state.company.companyList)
 
@@ -19,6 +32,20 @@ function CompanyTable() {
 
   return (
     <div className="row flex flex-wrap  ">
+      <CContainer>
+        <CRow>
+          <CCol xs="auto" className="me-auto">
+            <h5 className="card-title fs-4 fw-semibold m-2">Companies</h5>
+          </CCol>
+          <CCol xs="auto">
+            <Link to={`/savecompany`} className="col align-self-end">
+              <CButton className="btn btn-secondary mb-3" type="button">
+                <CIcon icon={cilLibraryAdd} /> Add New Company
+              </CButton>
+            </Link>
+          </CCol>
+        </CRow>
+      </CContainer>
       {data.map((type, index) => (
         <CCard className="m-4" style={{ width: '22rem' }} key={index}>
           <CCardImage
