@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -13,8 +13,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
-import CIcon from '@coreui/icons-react'
-import { cilUserFollow } from '@coreui/icons'
 
 function EmployeeTable() {
   const data = useSelector((state) => state.user.data)

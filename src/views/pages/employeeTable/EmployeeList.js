@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import {
-  CAvatar,
-  CButton,
-  CCard,
-  CCardBody,
-  CCardImage,
-  CCardText,
-  CCardTitle,
-} from '@coreui/react'
+import React, { useEffect } from 'react'
+import { CAvatar, CButton, CCard, CCardBody } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
-
 import {
   CCol,
-  CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -25,22 +15,7 @@ import {
   CContainer,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cilPeople,
-  cilUserFollow,
-} from '@coreui/icons'
+import { cilPeople } from '@coreui/icons'
 
 const EmployeeList = () => {
   const data = useSelector((state) => state.user.data)

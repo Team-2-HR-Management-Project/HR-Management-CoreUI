@@ -1,25 +1,11 @@
 import {
-  CCard,
-  CCardImage,
-  CCardBody,
-  CCardTitle,
-  CCardText,
-  CListGroup,
-  /* CListGroupItem, */
-  CTable,
   CImage,
   CForm,
   CFormInput,
-  CTableRow,
-  CTableHeaderCell,
   CInputGroup,
   CInputGroupText,
-  CTableBody,
-  CTableDataCell,
   CRow,
   CCol,
-  CFormSelect,
-  CFormCheck,
   CButton,
   CFormLabel,
   CContainer,
@@ -97,7 +83,7 @@ const EmployeeDetail = () => {
                 </CInputGroup>
               </CRow>
               <CRow className="m-3 justify-content-center align-self-end">
-                <Link to={`/manager/managerdetail/${id}`} className="col align-self-end">
+                <Link to={`/employee/employeedetail/${id}`} className="col align-self-end">
                   <CButton
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
