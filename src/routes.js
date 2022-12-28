@@ -11,13 +11,11 @@ const EmployeeList = React.lazy(() => import('./views/pages/employeeTable/Employ
 const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/ManagerDetail'))
 const ManagerTable = React.lazy(() => import('./views/pages/managerTable/ManagerTable'))
 const ManagerList = React.lazy(() => import('./views/pages/managerTable/ManagerList'))
-<<<<<<< HEAD
 const SaveManager = React.lazy(() => import('./views/pages/saveUser/SaveManager'))
-=======
-const SaveUser = React.lazy(() => import('./views/pages/saveUser/SaveUser'))
+const SaveEmployee = React.lazy(() => import('./views/pages/saveUser/SaveEmployee'))
 const SaveCompany = React.lazy(() => import('./views/pages/saveCompany/SaveCompany'))
->>>>>>> 8cc91448f29c041d275f7e7ea2e2374ce5d39504
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
+const Login = React.lazy(() => import('./views/pages/login/Login'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/employee/employeetable', name: 'Employee Table', element: EmployeeTable },
@@ -29,6 +27,7 @@ const routes = [
   { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
   { path: '/manager/managerlist', name: 'Manager List', element: ManagerList },
   { path: '/page500', name: 'page 500', element: Page500 },
+  { path: '/login', name: 'login', element: Login },
 
   {
     path: '/employee/employeedetail/:id',
@@ -40,13 +39,10 @@ const routes = [
     name: 'Manager Table',
     element: ManagerDetail,
   },
-<<<<<<< HEAD
-  { path: '/savemanager', name: 'Save Manager', element: SaveManager },
 
-=======
-  { path: '/saveuser', name: 'Save User', element: SaveUser },
+  { path: '/savemanager', name: 'Save Manager', element: SaveManager },
+  { path: '/saveemployee', name: 'Save User', element: SaveEmployee },
   { path: '/saveCompany', name: 'Save Company', element: SaveCompany },
->>>>>>> 8cc91448f29c041d275f7e7ea2e2374ce5d39504
   { path: '/*', name: 'News', element: News },
 ]
 export default routes

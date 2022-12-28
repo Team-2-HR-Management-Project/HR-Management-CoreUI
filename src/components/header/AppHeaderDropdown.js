@@ -10,6 +10,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CLink,
 } from '@coreui/react'
 import {
   cilBell,
@@ -23,15 +24,20 @@ import {
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-
+import { logout } from 'src/store/features/AuthSlice'
 const AppHeaderDropdown = () => {
   const myuser = useSelector((state) => state.user.user)
   const token = useSelector((state) => state.auth.token)
+  const isAuthanticated = useSelector((state) => state.auth.isAuthanticated)
 
   const dispatch = useDispatch()
 
   const getUser = async () => {
     const response = await dispatch(findbyTokenwithAxios({ token }))
+  }
+  const mylogout = () => {
+    dispatch(logout())
+    console.log(isAuthanticated)
   }
 
   useEffect(() => {
@@ -56,7 +62,7 @@ const AppHeaderDropdown = () => {
           Settings
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem href="/" onClick={mylogout}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
         </CDropdownItem>
