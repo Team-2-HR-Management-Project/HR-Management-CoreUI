@@ -87,13 +87,13 @@ const EmployeeList = () => {
                         <div>{type?.email}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type?.phone}</div>
+                        <div>{type.phone == null ? '--' : type.phone}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type?.role}</div>
+                        <div>{type.role == null ? '--' : type.role.toString()}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type?.company}</div>
+                        <div>{type.company == null ? '--' : type.company}</div>
                       </CTableDataCell>
                       <CTableDataCell>
                         <Link

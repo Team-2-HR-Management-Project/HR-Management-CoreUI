@@ -46,6 +46,11 @@ const Login = () => {
       )
     }
   }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      console.log('do validate')
+    }
+  }
 
   React.useEffect(() => {}, [isLogin])
 
@@ -87,8 +92,14 @@ const Login = () => {
                       />
                     </CInputGroup>
                     <CRow className="d-grid gap-2 d-md-block">
-                      <Link to={isLogin ? '*' : null}>
-                        <CButton size="lg" color="success" className="px-4" onClick={login}>
+                      <Link to={isLogin ? '/*' : null}>
+                        <CButton
+                          size="lg"
+                          color="success"
+                          className="px-4"
+                          onClick={login}
+                          onKeyDown={handleKeyDown}
+                        >
                           Login
                         </CButton>
                       </Link>

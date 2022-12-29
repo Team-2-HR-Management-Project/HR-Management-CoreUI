@@ -35,7 +35,7 @@ const EmployeeDetail = () => {
   const update = () => {
     dispatch(
       updateUser({
-        authid: employee.authid,
+        id: employee.authid,
         address: address == null ? employee.address : address,
         photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,
@@ -45,7 +45,7 @@ const EmployeeDetail = () => {
 
   useEffect(() => {
     dispatch(userSeeDetail(id))
-  }, [])
+  }, [employee.authid])
   return (
     <>
       <CContainer>

@@ -6,6 +6,7 @@ const initialStateUser = {
   token: '',
   user: {},
   managerList: [],
+  authid: null,
   otherUserProfile: {},
   otherUserId: null,
   currentUserId: null,
@@ -155,6 +156,7 @@ export const updateUser = createAsyncThunk(
       })
         .then((response) => response.json())
         .catch((error) => console.log(error))
+      console.log(response)
       return response
     } catch (err) {
       return err.response
@@ -217,6 +219,7 @@ const userSlice = createSlice({
     })
     build.addCase(updateUser.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
+      state.authid = action.payload.authid
       state.otherUserProfile = action.payload
       state.isLoading = false
     })
