@@ -90,7 +90,7 @@ const EmployeeList = () => {
                         <div>{type.phone == null ? '--' : type.phone}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type.role == null ? '--' : type.role.toString()}</div>
+                        <div>{type.role == null ? '--' : type.role}</div>
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{type.company == null ? '--' : type.company}</div>

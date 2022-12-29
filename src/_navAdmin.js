@@ -28,31 +28,27 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'News',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    name: 'User',
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'News',
-        to: '/news',
+        name: 'User Card',
+        to: '/employee/employeetable',
+      },
+      {
+        component: CNavItem,
+        name: 'User List',
+        to: '/employee/emplyeelist',
       },
     ],
   },
+
   {
     component: CNavGroup,
     name: 'Manager',
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
     items: [
-      {
-        component: CNavItem,
-        name: 'Admin Card',
-        to: '*',
-      },
-      {
-        component: CNavItem,
-        name: 'Admin List',
-        to: '*',
-      },
       {
         component: CNavItem,
         name: 'Manager Card',
