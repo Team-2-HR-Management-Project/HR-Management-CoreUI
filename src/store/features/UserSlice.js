@@ -163,6 +163,28 @@ export const updateUser = createAsyncThunk(
     }
   },
 )
+
+export const updateAllUser = createAsyncThunk(
+  'user/updateall',
+
+  async (payload) => {
+    try {
+      const response = await fetch(userService.userupdateall, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => response.json())
+        .catch((error) => console.log(error))
+      console.log(response)
+      return response
+    } catch (err) {
+      return err.response
+    }
+  },
+)
 export const fetchCreateManager = createAsyncThunk()
 
 const userSlice = createSlice({

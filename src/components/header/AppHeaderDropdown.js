@@ -53,7 +53,7 @@ const AppHeaderDropdown = () => {
         <CDropdownHeader className="bg-light fw-semibold py-2">
           Hello {myuser.name} {myuser.surname}
         </CDropdownHeader>
-        <CDropdownItem href="#">
+        <CDropdownItem href={`/profile`}>
           <CIcon icon={cilUser} className="me-2" />
           Profile
         </CDropdownItem>
