@@ -28,10 +28,11 @@ const PasswordReset = () => {
   const loading = useSelector((state) => state.auth.isLoading)
   const isActivated = useSelector((state) => state.auth.isActivated)
   const createPassword = async () => {
-    if (password1 === '' || password2 === '') {
+    if (email === '' || temppassword === '') {
+      alert('Please enter your email and activation code!')
+    } else if (password1 === '' || password2 === '') {
       alert('Please enter any password!')
-    } else if ()
-    else if (password1.length < 8 && password1.length > 32) {
+    } else if (password1.length < 8 && password1.length > 32) {
       alert('Password can be between 8 to 32 characters!')
     } else if (password2.length < 8 && password2.length > 32) {
       alert('Password can be between 8 to 32 characters!')
