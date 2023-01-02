@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CAvatar, CButton, CCard, CCardBody } from '@coreui/react'
+import { CImage, CButton, CCard, CCardBody } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
@@ -28,7 +28,7 @@ const EmployeeList = () => {
 
   useEffect(() => {
     getUsers()
-  }, [])
+  }, [data.size])
 
   return (
     <>
@@ -69,8 +69,8 @@ const EmployeeList = () => {
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar
-                          size="md"
+                        <CImage
+                          className="avatar-circle-size"
                           src={
                             type.photo == null
                               ? require('../../../assets/person/user.webp')

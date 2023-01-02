@@ -28,8 +28,22 @@
     border-radius: 50%;
     border: solid 4px rgb(168, 168, 168);
 }
+.avatar-circle-size{
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
 .recPhotodetail{
     width: 325px;
     height: 250px;
     object-fit: cover;      
+}
+.my-dropdown {
+    text-decoration-line: none;
+    background-color: transparent;
+    color: black;
+    display: block;
+    width: 100%;
+    
 }

@@ -25,6 +25,7 @@ import {
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import { logout } from 'src/store/features/AuthSlice'
+import { Link } from 'react-router-dom'
 const AppHeaderDropdown = () => {
   const myuser = useSelector((state) => state.user.user)
   const token = useSelector((state) => state.auth.token)
@@ -53,19 +54,15 @@ const AppHeaderDropdown = () => {
         <CDropdownHeader className="bg-light fw-semibold py-2">
           Hello {myuser.name} {myuser.surname}
         </CDropdownHeader>
-        <CDropdownItem href={`/profile`}>
+        <Link to={`/profile/${myuser.authid}`} className="my-dropdown col align-self-end">
           <CIcon icon={cilUser} className="me-2" />
           Profile
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilSettings} className="me-2" />
-          Settings
-        </CDropdownItem>
+        </Link>
         <CDropdownDivider />
-        <CDropdownItem href="/" onClick={mylogout}>
+        <Link to={`/`} className="my-dropdown col align-self-end" onClick={mylogout}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
-        </CDropdownItem>
+        </Link>
       </CDropdownMenu>
     </CDropdown>
   )

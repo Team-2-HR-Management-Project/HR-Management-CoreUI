@@ -40,7 +40,7 @@ function CompanyTable() {
           <CCardImage
             className=" recPhotodetail mt-3 p-2"
             orientation="top"
-            src={type.logo == null ? require('../../../assets/person/user.webp') : type.logo}
+            src={type.logo == null ? require('../../../assets/person/company.jpg') : type.logo}
           />
           <CCardBody>
             <CCardTitle className="text-center">{type?.name}</CCardTitle>

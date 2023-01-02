@@ -38,7 +38,7 @@ const CompanyDetail = () => {
   const update = () => {
     dispatch(
       updateCompany({
-        companyid: company.id,
+        id: company.id,
         address: address == null ? company.address : address,
         logo: logo == null ? company.logo : logo,
         phone: phone == null ? company.phone : phone,
@@ -53,7 +53,7 @@ const CompanyDetail = () => {
 
   useEffect(() => {
     dispatch(companyDetail(id))
-  }, [])
+  }, [company.size])
   return (
     <>
       <CContainer>
@@ -68,7 +68,7 @@ const CompanyDetail = () => {
                     rounded
                     src={
                       company.logo == null
-                        ? require('../../../assets/person/user.webp')
+                        ? require('../../../assets/person/company.jpg')
                         : company.logo
                     }
                     width={200}

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CAvatar, CButton, CCard, CCardBody } from '@coreui/react'
+import { CImage, CButton, CCard, CCardBody } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findAllCompany } from 'src/store/features/companySlice'
 import { Link } from 'react-router-dom'
@@ -28,7 +28,7 @@ const CompanyList = () => {
 
   useEffect(() => {
     getCompanies()
-  }, [])
+  }, [data.size])
 
   return (
     <>
@@ -70,11 +70,11 @@ const CompanyList = () => {
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar
-                          size="md"
+                        <CImage
+                          className="avatar-circle-size"
                           src={
                             type.logo == null
-                              ? require('../../../assets/person/user.webp')
+                              ? require('../../../assets/person/company.jpg')
                               : type.logo
                           }
                         />

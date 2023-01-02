@@ -25,7 +25,7 @@ const routes = [
   { path: '/company/companylist', name: 'Company List', element: CompanyList },
   { path: '/company/companydetail/:id', name: 'Company Detail', element: CompanyDetail },
   { path: '/createpassword', name: 'New Password Page', element: PasswordReset },
-  { path: '/employee/emplyeelist', name: 'Employee List', element: EmployeeList },
+  { path: '/employee/employeelist', name: 'Employee List', element: EmployeeList },
   { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
   { path: '/manager/managerlist', name: 'Manager List', element: ManagerList },
   { path: '/page500', name: 'page 500', element: Page500 },

@@ -13,16 +13,19 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { userSeeDetail, updateAllUser } from 'src/store/features/UserSlice'
+import { updateAllUser, findbyTokenwithAxios } from 'src/store/features/UserSlice'
 
 const Profile = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const employee = useSelector((state) => state.user.otherUserProfile)
+  const employee = useSelector((state) => state.user.user)
+  const token = useSelector((state) => state.auth.token)
   const [phone, setPhone] = useState(employee?.phone)
   const [address, setAddress] = useState(employee?.address)
   const [photo, setPhoto] = useState(employee?.photo)
+  const [name, setName] = useState(employee?.name)
   const [middleName, setMiddleName] = useState(employee?.middleName)
+  const [surname, setSurname] = useState(employee?.surname)
   const [secondSurname, setSecondSurname] = useState(employee?.secondSurname)
   const [profession, setProfession] = useState(employee?.profession)
   const [dob, setDob] = useState(employee?.dob)
@@ -43,11 +46,14 @@ const Profile = () => {
   const update = () => {
     dispatch(
       updateAllUser({
-        id: employee.authid,
+        id: employee.id,
+        authid: employee.authid,
         address: address == null ? employee.address : address,
         photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,
+        name: name == null ? employee.name : name,
         middleName: middleName == null ? employee.middleName : middleName,
+        surname: surname == null ? employee.surname : surname,
         secondSurname: secondSurname == null ? employee.secondSurname : secondSurname,
         profession: profession == null ? employee.profession : profession,
         dob: dob == null ? employee.dob : dob,
@@ -58,10 +64,15 @@ const Profile = () => {
       }),
     )
   }
+  // const getUser = async () => {
+  //   const response = await dispatch(findbyTokenwithAxios({ token }))
+  // }
 
   useEffect(() => {
-    dispatch(userSeeDetail(id))
-  }, [employee.authid])
+    // getUser()
+    updateAllUser()
+  }, [employee])
+
   return (
     <>
       <CContainer>
@@ -127,7 +138,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Name</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.name} disabled />
+                  <CFormInput
+                    placeholder={employee?.name == null ? 'empty' : employee.name}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
@@ -149,7 +164,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Surname</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.surname} disabled />
+                  <CFormInput
+                    placeholder={employee?.surname == null ? 'empty' : employee.surname}
+                    type="text"
+                    onChange={(e) => setSurname(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
@@ -290,22 +309,6 @@ const Profile = () => {
                     type="text"
                     onChange={(e) => setResignDate(e.target.value)}
                   />
-                </CCol>
-              </CRow>
-              <CRow className=" mb-4">
-                <CCol sm={3}>
-                  <CFormLabel className="col col-form-label">Status</CFormLabel>
-                </CCol>
-                <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={employee?.status} type="text" disabled />
-                </CCol>
-              </CRow>
-              <CRow className=" mb-4 ">
-                <CCol sm={3}>
-                  <CFormLabel className="col col-form-label ">Company</CFormLabel>
-                </CCol>
-                <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={employee?.company} type="text" disabled />
                 </CCol>
               </CRow>
             </CForm>

@@ -260,6 +260,17 @@ const userSlice = createSlice({
     build.addCase(getAllManagers.pending, (state) => {
       state.isLoading = true
     })
+    build.addCase(updateAllUser.fulfilled, (state, action) => {
+      state.authid = action.payload.authid
+      state.user = action.payload
+      state.isLoading = false
+    })
+    build.addCase(updateAllUser.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(updateAllUser.pending, (state) => {
+      state.isLoading = true
+    })
   },
 })
 export const { setData } = userSlice.actions

@@ -51,24 +51,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'User List',
-        to: '/employee/emplyeelist',
-      },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Company',
-    icon: <CIcon icon={cilMagnifyingGlass} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Company List',
-        to: '/company/companylist',
-      },
-      {
-        component: CNavItem,
-        name: 'Company Table',
-        to: '/company/companytable',
+        to: '/employee/employeelist',
       },
     ],
   },
