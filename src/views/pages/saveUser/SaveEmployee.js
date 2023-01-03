@@ -156,13 +156,13 @@ const SaveEmployee = () => {
                       </CFormSelect>
                     </CInputGroup>
                     <CRow className="d-grid gap-3 d-md-block ">
-                      <Link to={'/manager/managerlist'}>
+                      <Link to={'/employee/employeelist'}>
                         <CButton size="lg" color="success" onClick={createManager}>
                           Create Manager
                         </CButton>
                       </Link>
 
-                      <Link to={'/manager/managerlist'}>
+                      <Link to={'/employee/employeelist'}>
                         <CButton size="lg" color="secondary" variant="outline">
                           Go back to List
                         </CButton>

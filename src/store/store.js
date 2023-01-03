@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { AuthSlice, UserSlice, ManagerSlice, companySlice } from './features'
+import { AuthSlice, UserSlice, ManagerSlice, companySlice, LeaveSlice } from './features'
 
 const store = configureStore({
   reducer: {
@@ -7,6 +7,7 @@ const store = configureStore({
     user: UserSlice,
     manager: ManagerSlice,
     company: companySlice,
+    leave: LeaveSlice,
   },
 })
 
