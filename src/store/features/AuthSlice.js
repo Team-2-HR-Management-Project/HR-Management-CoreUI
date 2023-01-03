@@ -10,6 +10,7 @@ const initialStateAuth = {
   isLoading: false,
   isLoadingRegister: false,
   isSave: false,
+  isExist: false,
   code: 0,
   alertMessage: '',
   error: {
@@ -147,7 +148,8 @@ const authSlice = createSlice({
     build.addCase(forgetPassword.fulfilled, (state, action) => {
       state.auth = action.payload
       state.isLoading = false
-      alert('password is changed successfully')
+      state.isExist = true
+      alert('Reset Password Activation code sent to your email.')
     })
 
     build.addCase(forgetPassword.pending, (state) => {
@@ -156,7 +158,9 @@ const authSlice = createSlice({
 
     build.addCase(forgetPassword.rejected, (state) => {
       state.isLoading = false
+      state.isExist = false
       state.alertMessage = state.error.message
+      alert('Email does not exist.')
     })
 
     build.addCase(fecthRegisterbymail.fulfilled, (state, action) => {

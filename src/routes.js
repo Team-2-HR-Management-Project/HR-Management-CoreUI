@@ -11,6 +11,7 @@ const CompanyTable = React.lazy(() => import('./views/pages/companyTable/Company
 const CompanyList = React.lazy(() => import('./views/pages/companyTable/CompanyList'))
 const CompanyDetail = React.lazy(() => import('./views/pages/companyDetail/CompanyDetail'))
 const PasswordReset = React.lazy(() => import('./views/pages/passwordreset/PasswordReset'))
+const ForgotPassword = React.lazy(() => import('./views/pages/forgetpassword/ForgotPassword'))
 const ManagerDetail = React.lazy(() => import('./views/pages/managerTable/ManagerDetail'))
 const ManagerTable = React.lazy(() => import('./views/pages/managerTable/ManagerTable'))
 const ManagerList = React.lazy(() => import('./views/pages/managerTable/ManagerList'))
@@ -30,6 +31,7 @@ const routes = [
   { path: '/company/companylist', name: 'Company List', element: CompanyList },
   { path: '/company/companydetail/:id', name: 'Company Detail', element: CompanyDetail },
   { path: '/createpassword', name: 'New Password Page', element: PasswordReset },
+  { path: '/forgetpassword', name: 'Forgot Password Page', element: ForgotPassword },
   { path: '/employee/employeelist', name: 'Employee List', element: EmployeeList },
   { path: '/manager/managertable', name: 'Manager List', element: ManagerTable },
   { path: '/manager/managerlist', name: 'Manager List', element: ManagerList },

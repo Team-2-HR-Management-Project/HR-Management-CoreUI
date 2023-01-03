@@ -112,9 +112,11 @@ const Login = () => {
                     </CRow>
                     <CRow className="justify-content-center">
                       <CCol className="text-right">
+                      <Link to={`/forgetpassword`}>
                         <CButton color="link" className="px-0">
                           Forgot password?
                         </CButton>
+                      </Link>
                       </CCol>
                     </CRow>
                   </CForm>
