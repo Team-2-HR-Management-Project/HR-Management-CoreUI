@@ -276,7 +276,7 @@ const userSlice = createSlice({
     build.addCase(getAllManagers.pending, (state) => {
       state.isLoading = true
     })
-<<<<<<< Updated upstream
+
     build.addCase(updateAllUser.fulfilled, (state, action) => {
       state.authid = action.payload.authid
       state.user = action.payload
@@ -286,7 +286,8 @@ const userSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(updateAllUser.pending, (state) => {
-=======
+      state.isLoading = true
+    })
     build.addCase(getAllEmployees.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
       // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
@@ -297,7 +298,6 @@ const userSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(getAllEmployees.pending, (state) => {
->>>>>>> Stashed changes
       state.isLoading = true
     })
   },

@@ -11,21 +11,28 @@ import {
   CCol,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllUsers } from 'src/store/features/UserSlice'
+import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 function EmployeeTable() {
-  const data = useSelector((state) => state.user.data)
+  const data = useSelector((state) => state.user.employeeList)
+  const token = useSelector((state) => state.auth.token)
+  const myuser = useSelector((state) => state.user.user)
+
+  const getUser = async () => {
+    const response = await dispatch(findbyTokenwithAxios({ token }))
+  }
 
   const dispatch = useDispatch()
 
-  const getUsers = () => {
-    dispatch(getAllUsers())
+  const getEmployees = () => {
+    getUser()
+    dispatch(getAllEmployees(myuser.companyid))
   }
 
   useEffect(() => {
-    getUsers()
-  }, [])
+    getEmployees()
+  }, [data.size])
 
   return (
     <div>
@@ -33,7 +40,7 @@ function EmployeeTable() {
         <CContainer>
           <CRow>
             <CCol xs="auto" className="me-auto">
-              <h5 className="card-title fs-4 fw-semibold m-2"> Users </h5>
+              <h5 className="card-title fs-4 fw-semibold m-2"> Employees </h5>
             </CCol>
             <CCol xs="auto">
               {/* <CButton className="btn btn-secondary mb-3" type="button">
