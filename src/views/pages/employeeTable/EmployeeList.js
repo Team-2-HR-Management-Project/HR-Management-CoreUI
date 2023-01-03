@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react'
-import { CImage, CButton, CCard, CCardBody } from '@coreui/react'
+import React, { useEffect, useState } from 'react'
+import {
+  CAvatar,
+  CButton,
+  CCard,
+  CCardBody,
+  CCardImage,
+  CCardText,
+  CCardTitle,
+} from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
+
 import {
   CCol,
+  CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -15,27 +25,35 @@ import {
   CContainer,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilPeople } from '@coreui/icons'
+import {
+  cibCcAmex,
+  cibCcApplePay,
+  cibCcMastercard,
+  cibCcPaypal,
+  cibCcStripe,
+  cibCcVisa,
+  cifBr,
+  cifEs,
+  cifFr,
+  cifIn,
+  cifPl,
+  cifUs,
+  cilPeople,
+  cilUserFollow,
+} from '@coreui/icons'
 
 const EmployeeList = () => {
-  const data = useSelector((state) => state.user.employeeList)
-  const token = useSelector((state) => state.auth.token)
-  const myuser = useSelector((state) => state.user.user)
-
-  const getUser = async () => {
-    const response = await dispatch(findbyTokenwithAxios({ token }))
-  }
+  const data = useSelector((state) => state.user.data)
 
   const dispatch = useDispatch()
 
-  const getEmployees = () => {
-    getUser()
-    dispatch(getAllEmployees(myuser.companyid))
+  const getUsers = () => {
+    dispatch(getAllUsers())
   }
 
   useEffect(() => {
-    getEmployees()
-  }, [data.size])
+    getUsers()
+  }, [])
 
   return (
     <>
@@ -49,9 +67,11 @@ const EmployeeList = () => {
                     <h5 className="card-title fs-4 fw-semibold m-2">Users</h5>
                   </CCol>
                   <CCol xs="auto">
-                    {/* <CButton className="btn btn-secondary mb-3" type="button">
-                      <CIcon icon={cilUserFollow} /> Add New User
-                    </CButton> */}
+                    <Link to={`/saveemployee`} className="col align-self-end">
+                      <CButton className="btn btn-secondary mb-3" type="button">
+                        <CIcon icon={cilUserFollow} /> Add New Employee
+                      </CButton>
+                    </Link>
                   </CCol>
                 </CRow>
               </CContainer>
@@ -76,8 +96,8 @@ const EmployeeList = () => {
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CImage
-                          className="avatar-circle-size"
+                        <CAvatar
+                          size="md"
                           src={
                             type.photo == null
                               ? require('../../../assets/person/user.webp')
@@ -94,13 +114,13 @@ const EmployeeList = () => {
                         <div>{type?.email}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type.phone == null ? '--' : type.phone}</div>
+                        <div>{type?.phone}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type.role == null ? '--' : type.role}</div>
+                        <div>{type?.role}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type.company == null ? '--' : type.company}</div>
+                        <div>{type?.company}</div>
                       </CTableDataCell>
                       <CTableDataCell>
                         <Link

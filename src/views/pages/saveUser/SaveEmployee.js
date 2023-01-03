@@ -36,7 +36,7 @@ const SaveEmployee = () => {
     dispatch(findAllCompany())
   }
 
-  const createManager = async () => {
+  const createEmployee = async () => {
     if (name === '') {
       alert('Please enter any name!')
     } else if (surname === '') {
@@ -55,7 +55,7 @@ const SaveEmployee = () => {
           email: email,
           phone: phone,
           companyid: companyid,
-          role: 'MANAGER',
+          role: 'EMPLOYEE',
         }),
       )
     }
@@ -75,7 +75,7 @@ const SaveEmployee = () => {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>Create New Manager</h1>
+                    <h1>Create New Employee</h1>
                     <p className="text-medium-emphasis">Please fill in the information...</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -157,8 +157,8 @@ const SaveEmployee = () => {
                     </CInputGroup>
                     <CRow className="d-grid gap-3 d-md-block ">
                       <Link to={'/employee/employeelist'}>
-                        <CButton size="lg" color="success" onClick={createManager}>
-                          Create Manager
+                        <CButton size="lg" color="success" onClick={createEmployee}>
+                          Create Employee
                         </CButton>
                       </Link>
 

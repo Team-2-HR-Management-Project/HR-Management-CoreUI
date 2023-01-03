@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   CButton,
   CCard,
@@ -11,28 +11,23 @@ import {
   CCol,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
+import CIcon from '@coreui/icons-react'
+import { cilUserFollow } from '@coreui/icons'
 
 function EmployeeTable() {
-  const data = useSelector((state) => state.user.employeeList)
-  const token = useSelector((state) => state.auth.token)
-  const myuser = useSelector((state) => state.user.user)
-
-  const getUser = async () => {
-    const response = await dispatch(findbyTokenwithAxios({ token }))
-  }
+  const data = useSelector((state) => state.user.data)
 
   const dispatch = useDispatch()
 
-  const getEmployees = () => {
-    getUser()
-    dispatch(getAllEmployees(myuser.companyid))
+  const getUsers = () => {
+    dispatch(getAllUsers())
   }
 
   useEffect(() => {
-    getEmployees()
-  }, [data.size])
+    getUsers()
+  }, [])
 
   return (
     <div>
@@ -40,12 +35,14 @@ function EmployeeTable() {
         <CContainer>
           <CRow>
             <CCol xs="auto" className="me-auto">
-              <h5 className="card-title fs-4 fw-semibold m-2"> Employees </h5>
+              <h5 className="card-title fs-4 fw-semibold m-2"> Users </h5>
             </CCol>
             <CCol xs="auto">
-              {/* <CButton className="btn btn-secondary mb-3" type="button">
-                <CIcon icon={cilUserFollow} />. Add New User
-              </CButton> */}
+              <Link to={`/saveemployee`} className="col align-self-end">
+                <CButton className="btn btn-secondary mb-3" type="button">
+                  <CIcon icon={cilUserFollow} /> Add New Employee
+                </CButton>
+              </Link>
             </CCol>
           </CRow>
         </CContainer>

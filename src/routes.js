@@ -56,7 +56,7 @@ const routes = [
   },
 
   { path: '/savemanager', name: 'Save Manager', element: SaveManager },
-  { path: '/saveemployee', name: 'Save User', element: SaveEmployee },
+  { path: '/saveemployee', name: 'Save Employee', element: SaveEmployee },
   { path: '/saveCompany', name: 'Save Company', element: SaveCompany },
   { path: '/*', name: 'News', element: News },
 ]
