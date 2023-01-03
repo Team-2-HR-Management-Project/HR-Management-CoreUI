@@ -70,11 +70,19 @@ const ForgetPassword = () => {
                       />
                     </CInputGroup>
                     <CRow className="d-grid gap-3 d-md-block ">
-                      <Link to={isExist ? onClick={forgetPassword}: '/forgetpassword'}>
-                        <CButton size="lg" color="success" >
+                      {/* <Link to={isExist ? (onClick = { forgetPassword }) : '/forgetpassword'}>
+                        <CButton size="lg" color="success">
                           Send Activation Code
                         </CButton>
-                      </Link>
+                      </Link> */}
+
+                      {isExist ? (
+                        <CButton onClick={forgetPassword} size="lg" color="success">
+                          Send Activation Code
+                        </CButton>
+                      ) : (
+                        <Link to="/forgetpassword"></Link>
+                      )}
 
                       <Link to={'/login'}>
                         <CButton size="lg" color="secondary" variant="outline">
