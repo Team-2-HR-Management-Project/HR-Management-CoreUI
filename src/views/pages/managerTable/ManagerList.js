@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CAvatar, CButton, CCard, CCardBody } from '@coreui/react'
+import { CImage, CButton, CCard, CCardBody } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllManagers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
@@ -19,7 +19,7 @@ import CIcon from '@coreui/icons-react'
 import { cilPeople, cilUserFollow } from '@coreui/icons'
 
 const ManagerList = () => {
-  const managerList = useSelector((state) => state.user.managerList)
+  const managerList = useSelector((state) => state.manager.managerList)
 
   const dispatch = useDispatch()
 
@@ -29,7 +29,7 @@ const ManagerList = () => {
 
   useEffect(() => {
     getManagers()
-  }, [])
+  }, [managerList.size])
 
   return (
     <>
@@ -71,8 +71,8 @@ const ManagerList = () => {
                   {managerList.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar
-                          size="md"
+                        <CImage
+                          className="avatar-circle-size"
                           src={
                             type.photo == null
                               ? require('../../../assets/person/user.webp')

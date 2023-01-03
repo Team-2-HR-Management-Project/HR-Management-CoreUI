@@ -35,7 +35,7 @@ const EmployeeDetail = () => {
   const update = () => {
     dispatch(
       updateUser({
-        id: employee.authid,
+        authid: employee.authid,
         address: address == null ? employee.address : address,
         photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,

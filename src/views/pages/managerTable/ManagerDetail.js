@@ -19,7 +19,7 @@ import { managerSeeDetail } from 'src/store/features/ManagerSlice'
 const EmployeeDetail = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const manager = useSelector((state) => state.user.otherUserProfile)
+  const manager = useSelector((state) => state.manager.otherManager)
   const [phone, setPhone] = useState(manager?.phone)
   const [address, setAddress] = useState(manager?.address)
   const [photo, setPhoto] = useState(manager?.photo)

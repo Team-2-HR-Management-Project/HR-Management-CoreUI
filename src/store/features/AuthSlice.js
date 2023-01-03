@@ -101,6 +101,27 @@ export const fetchCreatePassword = createAsyncThunk(
   },
 )
 
+export const forgetPassword = createAsyncThunk(
+  'auth/forgetpassword',
+
+  async (payload) => {
+    try {
+      const response = await fetch(authService.forgetpassword, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => response.json())
+        .catch((error) => console.log(error))
+      return response
+    } catch (err) {
+      return err.response
+    }
+  },
+)
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialStateAuth,
@@ -123,6 +144,22 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (build) => {
+
+    build.addCase(forgetPassword.fulfilled, (state,action) => {
+      state.auth=action.payload
+      state.isLoading = false
+      alert('password is changed successfully')
+    })
+
+    build.addCase(forgetPassword.pending, (state) => {
+      state.isLoading = true
+    })
+
+    build.addCase(forgetPassword.rejected, (state) => {
+      state.isLoading = false
+      state.alertMessage = state.error.message
+    })
+
     build.addCase(fecthRegisterbymail.fulfilled, (state, action) => {
       state.auth = action.payload
       state.isSave = true
