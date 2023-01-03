@@ -34,12 +34,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'User Card',
-        to: '/employee/employeetable',
+        to: '/user/usertable',
       },
       {
         component: CNavItem,
         name: 'User List',
-        to: '/employee/employeelist',
+        to: '/user/userlist',
       },
     ],
   },

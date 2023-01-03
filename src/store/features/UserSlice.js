@@ -6,6 +6,7 @@ const initialStateUser = {
   token: '',
   user: {},
   managerList: [],
+  employeeList: [],
   authid: null,
   otherUserProfile: {},
   otherUserId: null,
@@ -54,6 +55,21 @@ export const getAllManagers = createAsyncThunk('managerList/getAllManagers', asy
     .then((data) => data)
 
   return result
+})
+
+export const getAllEmployees = createAsyncThunk('employeeList/getAllEmployees', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.get(userService.findallemployee + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
 })
 
 // export const findallUser = createAsyncThunk(
@@ -260,6 +276,7 @@ const userSlice = createSlice({
     build.addCase(getAllManagers.pending, (state) => {
       state.isLoading = true
     })
+<<<<<<< Updated upstream
     build.addCase(updateAllUser.fulfilled, (state, action) => {
       state.authid = action.payload.authid
       state.user = action.payload
@@ -269,6 +286,18 @@ const userSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(updateAllUser.pending, (state) => {
+=======
+    build.addCase(getAllEmployees.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
+      state.employeeList = action.payload
+      state.isLoading = false
+    })
+    build.addCase(getAllEmployees.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(getAllEmployees.pending, (state) => {
+>>>>>>> Stashed changes
       state.isLoading = true
     })
   },
