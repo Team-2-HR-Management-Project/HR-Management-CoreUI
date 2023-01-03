@@ -144,9 +144,8 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (build) => {
-
-    build.addCase(forgetPassword.fulfilled, (state,action) => {
-      state.auth=action.payload
+    build.addCase(forgetPassword.fulfilled, (state, action) => {
+      state.auth = action.payload
       state.isLoading = false
       alert('password is changed successfully')
     })

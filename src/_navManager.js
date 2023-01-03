@@ -45,12 +45,12 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'User Card',
+        name: 'Employee Card',
         to: '/employee/employeetable',
       },
       {
         component: CNavItem,
-        name: 'User List',
+        name: 'Employee List',
         to: '/employee/employeelist',
       },
     ],

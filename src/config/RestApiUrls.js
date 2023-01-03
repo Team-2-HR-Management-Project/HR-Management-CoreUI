@@ -9,7 +9,6 @@ const RestApis = {
   userService: 'http://localhost:' + userPort + version,
   companyService: 'http://localhost:' + companyPort + version,
   leaveService: 'http://localhost:' + leavePort + version,
-
 }
 
 export default RestApis
