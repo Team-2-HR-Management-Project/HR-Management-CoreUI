@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { userSeeDetail, updateAllUser } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios, updateAllUser } from 'src/store/features/UserSlice'
 
 const Profile = () => {
   const { id } = useParams()
@@ -39,6 +39,16 @@ const Profile = () => {
     }
     fileReader.readAsDataURL(file)
   }
+  const myuser = useSelector((state) => state.user.user)
+  const token = useSelector((state) => state.auth.token)
+
+  const getUser = async () => {
+    const response = await dispatch(findbyTokenwithAxios({ token }))
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
 
   const update = () => {
     dispatch(
@@ -60,8 +70,8 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    dispatch(userSeeDetail(id))
-  }, [employee.authid])
+    dispatch(updateAllUser(id), getUser())
+  }, [])
   return (
     <>
       <CContainer>
