@@ -19,6 +19,7 @@ import { Link, useParams } from 'react-router-dom'
 import { forgetPassword } from 'src/store/features/AuthSlice'
 import Loading from 'src/components/loading/Loading'
 const ForgetPassword = () => {
+  const auth = useSelector((state) => state.auth.auth)
   const [email, setEmail] = useState('')
   const isExist = useSelector((state) => state.auth.isExist)
   const loading = useSelector((state) => state.auth.isLoading)
@@ -30,7 +31,7 @@ const ForgetPassword = () => {
     } else {
       dispatch(
         forgetPassword({
-          email: email,
+          email: auth.email,
         }),
       )
     }
@@ -69,8 +70,8 @@ const ForgetPassword = () => {
                       />
                     </CInputGroup>
                     <CRow className="d-grid gap-3 d-md-block ">
-                      <Link to={isExist ? '/createpassword' : '/forgetpassword'}>
-                        <CButton size="lg" color="success" onClick={forgetPassword}>
+                      <Link to={isExist ? onClick={forgetPassword}: '/forgetpassword'}>
+                        <CButton size="lg" color="success" >
                           Send Activation Code
                         </CButton>
                       </Link>

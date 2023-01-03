@@ -3,6 +3,7 @@ import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 import Login from './views/pages/login/Login'
 import PasswordReset from './views/pages/passwordreset/PasswordReset'
+import ForgotPassword from './views/pages/forgetpassword/ForgotPassword'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -22,6 +23,11 @@ class App extends Component {
             <Route path="/" name="Login Page" element={<Login />} />
             <Route path="/login" name="Login Page" element={<Login />} />
             <Route path="/createpassword" name="New Password Page" element={<PasswordReset />} />
+            <Route
+              path="/forgetpassword"
+              name="Forgot Password Page"
+              element={<ForgotPassword />}
+            />
             <Route path="*" name="Home" element={<DefaultLayout />} />
           </Routes>
         </Suspense>
