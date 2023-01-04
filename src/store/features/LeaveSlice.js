@@ -5,6 +5,8 @@ import leaveService from 'src/config/LeaveService'
 const initialStateLeave = {
   leave: {},
   leaveList: [],
+  allLeaveList: [],
+  myLeaveList: [],
   otherLeaveList: [],
   leaveId: null,
   isLoading: false,
@@ -66,6 +68,20 @@ export const findallbyemployee = createAsyncThunk('leave/findallbyemployee', asy
     return err.response.data
   }
 })
+export const getAllLeaves = createAsyncThunk('leave/getAllLeaves', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.post(leaveService.findallleaves + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
 
 const leaveSlice = createSlice({
   name: 'leave',
@@ -115,6 +131,18 @@ const leaveSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(findallbyemployee.pending, (state, action) => {
+      state.isLoading = true
+    })
+    build.addCase(getAllLeaves.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
+      state.allLeaveList = action.payload
+      state.isLoading = false
+    })
+    build.addCase(getAllLeaves.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(getAllLeaves.pending, (state) => {
       state.isLoading = true
     })
   },
