@@ -105,10 +105,7 @@ const EmployeeList = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>
-                          {() => {
-                            dispatch(userSeeDetail(type?.employeeid))
-                          }}
-                          } {type?.surname}
+                          {type?.name} {type?.surname}
                         </div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
