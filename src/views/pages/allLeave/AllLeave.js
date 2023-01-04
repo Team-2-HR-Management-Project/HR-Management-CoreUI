@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {
-  CImage,
-  CButton,
-  CCard,
-  CCardBody,
-  CCardImage,
-  CCardText,
-  CCardTitle,
-} from '@coreui/react'
+import { CImage, CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findbyTokenwithAxios, userSeeDetail } from 'src/store/features/UserSlice'
 import { getAllLeaves } from 'src/store/features/LeaveSlice'
