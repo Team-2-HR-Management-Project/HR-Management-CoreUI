@@ -40,18 +40,13 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Employees',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    name: 'My Colleague',
+    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'Employee Card',
-        to: '/employee/employeetable',
-      },
-      {
-        component: CNavItem,
-        name: 'Employee List',
-        to: '/employee/employeelist',
+        name: 'My Colleague',
+        to: '/mycolleague',
       },
     ],
   },

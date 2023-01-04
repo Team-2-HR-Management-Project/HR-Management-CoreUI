@@ -11,23 +11,28 @@ import {
   CCol,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllUsers } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
 import CIcon from '@coreui/icons-react'
 import { cilUserFollow } from '@coreui/icons'
+import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
 
 function EmployeeTable() {
-  const data = useSelector((state) => state.user.data)
+  const data = useSelector((state) => state.user.employeeList)
+  const token = useSelector((state) => state.auth.token)
+  const myuser = useSelector((state) => state.user.user)
 
   const dispatch = useDispatch()
-
+  const getUser = async () => {
+    const response = await dispatch(findbyTokenwithAxios({ token }))
+  }
   const getUsers = () => {
-    dispatch(getAllUsers())
+    getUser()
+    dispatch(getAllEmployees(myuser.companyid))
   }
 
   useEffect(() => {
     getUsers()
-  }, [])
+  }, [data.size])
 
   return (
     <div>

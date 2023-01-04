@@ -11,6 +11,7 @@ const userService = {
   findallmanager: RestApis.userService + '/user/findallmanager',
   findallemployee: RestApis.userService + '/user/findallemployee/',
   userupdateall: RestApis.userService + '/user/updateall',
+  findallcolleague: RestApis.userService + '/user/findallcolleague/',
 }
 
 export default userService

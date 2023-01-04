@@ -9,7 +9,7 @@ import {
   CCardTitle,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { getAllColleague, findbyTokenwithAxios } from 'src/store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 import {
@@ -43,7 +43,7 @@ import {
 } from '@coreui/icons'
 
 const EmployeeList = () => {
-  const data = useSelector((state) => state.user.employeeList)
+  const data = useSelector((state) => state.user.mycolleague)
   const token = useSelector((state) => state.auth.token)
   const myuser = useSelector((state) => state.user.user)
 
@@ -53,7 +53,7 @@ const EmployeeList = () => {
   }
   const getUsers = () => {
     getUser()
-    dispatch(getAllEmployees(myuser.companyid))
+    dispatch(getAllColleague(myuser.companyid))
   }
 
   useEffect(() => {
@@ -69,14 +69,7 @@ const EmployeeList = () => {
               <CContainer>
                 <CRow>
                   <CCol xs="auto" className="me-auto">
-                    <h5 className="card-title fs-4 fw-semibold m-2">Employee</h5>
-                  </CCol>
-                  <CCol xs="auto">
-                    <Link to={`/saveemployee`} className="col align-self-end">
-                      <CButton className="btn btn-secondary mb-3" type="button">
-                        <CIcon icon={cilUserFollow} /> Add New Employee
-                      </CButton>
-                    </Link>
+                    <h5 className="card-title fs-4 fw-semibold m-2">My Colleague</h5>
                   </CCol>
                 </CRow>
               </CContainer>
@@ -93,8 +86,6 @@ const EmployeeList = () => {
                     <CTableHeaderCell className="text-center">Email</CTableHeaderCell>
                     <CTableHeaderCell>Phone</CTableHeaderCell>
                     <CTableHeaderCell>Role</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Company</CTableHeaderCell>
-                    <CTableHeaderCell>Detail</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -123,22 +114,6 @@ const EmployeeList = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{type?.role}</div>
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <div>{type?.company}</div>
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        <Link
-                          to={`/employee/employeedetail/${type.id}`}
-                          className="col align-self-end"
-                        >
-                          <CButton
-                            className="container align-self-end"
-                            style={{ backgroundColor: 'black' }}
-                          >
-                            Show Details
-                          </CButton>
-                        </Link>
                       </CTableDataCell>
                     </CTableRow>
                   ))}

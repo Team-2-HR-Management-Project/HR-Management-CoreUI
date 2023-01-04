@@ -21,6 +21,7 @@ const SaveCompany = React.lazy(() => import('./views/pages/saveCompany/SaveCompa
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Profile = React.lazy(() => import('./views/pages/profile/Profile'))
+const MyColleague = React.lazy(() => import('./views/pages/mycolleague/MyColleague'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -38,6 +39,7 @@ const routes = [
   { path: '/page500', name: 'page 500', element: Page500 },
   { path: '/login', name: 'login', element: Login },
   { path: '/profile/:id', name: 'profile', element: Profile },
+  { path: '/mycolleague', name: 'My Colleague', element: MyColleague },
 
   {
     path: '/employee/employeedetail/:id',
