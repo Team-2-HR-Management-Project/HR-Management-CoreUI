@@ -71,7 +71,7 @@ const EmployeeList = () => {
               <CContainer>
                 <CRow>
                   <CCol xs="auto" className="me-auto">
-                    <h5 className="card-title fs-4 fw-semibold m-2"> All Leaves</h5>
+                    <h5 className="card-title fs-4 fw-semibold m-2"> My Leaves</h5>
                   </CCol>
                 </CRow>
               </CContainer>
