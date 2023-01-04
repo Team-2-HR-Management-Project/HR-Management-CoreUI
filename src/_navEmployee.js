@@ -60,6 +60,11 @@ const _nav = [
         name: 'Leaves',
         to: '/leaves/allmyleaves',
       },
+      {
+        component: CNavItem,
+        name: 'Create Leave',
+        to: '/leaves/createleave',
+      },
     ],
   },
 ]

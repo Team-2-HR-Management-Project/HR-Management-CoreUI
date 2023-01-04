@@ -1,267 +1,185 @@
 import {
-    CImage,
-    CForm,
-    CFormInput,
-    CInputGroup,
-    CInputGroupText,
-    CRow,
-    CCol,
-    CButton,
-    CFormLabel,
-    CContainer,
+  CButton,
+  CCard,
+  CCardBody,
+  CCol,
+  CContainer,
+  CForm,
+  CFormInput,
+  CInputGroup,
+  CInputGroupText,
+  CRow,
+  CFormSelect,
   } from '@coreui/react'
+  import CIcon from '@coreui/icons-react'
+  import { cilLockLocked, cilUser } from '@coreui/icons'
   import React, { useEffect, useState } from 'react'
   import { useDispatch, useSelector } from 'react-redux'
-  import { Link, useParams } from 'react-router-dom'
-import { createLeave } from 'src/store/features/LeaveSlice'
-  import { userSeeDetail, updateUser } from 'src/store/features/UserSlice'
+  import { Link } from 'react-router-dom'
+  import { createLeave } from 'src/store/features/LeaveSlice'
+  import { getAllManagers } from 'src/store/features/ManagerSlice'
   
   const EmployeeLeave = () => {
-    const { id } = useParams()
     const dispatch = useDispatch()
+    const manager = useSelector((state) => state.user.managerList)
+    const employeeId = useSelector((state) => state.user.currentUserId)
+    const authId = useSelector((state) => state.auth.authid)
     const leave = useSelector((state) => state.leave.leave)
+    const list = useSelector((state) => state.leave.leaveList)
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [days, setDays] = useState('')
     const [type, setType] = useState('')
+    const [managerid, setManagerid] = useState(0)
   
-  
-    const create = () => {
-      dispatch(
-        createLeave({
-          authid: leave.authid,
-          managerid: leave.managerid,
-          employeeid: leave.employeeid,
-          startDate: leave.startDate,
-          endDate: leave.endDate,
-          days: leave.days,
-          type: leave.type,
-        }),
-      )
+    const getManagers = () => {
+      dispatch(getAllManagers())
     }
-  
+
+    const create = () => {
+      if (startDate === '') {
+        alert('Please enter the leave start date!')
+      } else if (endDate === '') {
+        alert('Please enter the leave end date!')
+      } else if (days === '') {
+        alert('Please enter the number of leave days!')
+      } else if (type === '') {
+        alert('Please enter the leave type!')
+      } else if (managerid === '') {
+        alert('Please select your manager!')
+      } else {
+        dispatch(
+          createLeave({
+            authid: authId,
+            startDate: startDate,
+            managerid: managerid,
+            employeeid: employeeId,
+            endDate: endDate,
+            days: days,
+            type: type,
+          }),
+        )
+      }
+    }
+    console.log(list);
+
     useEffect(() => {
-      dispatch(userSeeDetail(id))
-    }, [employee.authid])
+      getManagers()
+    }, [])
+    
     return (
       <>
-        <CContainer>
-          <CRow>
-            <CCol className="detailside mb-5" sm={4}>
-              <CRow className="m-5 justify-content-center">
-                <CRow className="m-2 justify-content-center">
-                  <div className="clearfix">
-                    <CImage
-                      className="circularPhotodetail"
-                      align="center"
-                      rounded
-                      src={
-                        employee.photo == null
-                          ? require('../../../assets/person/user.webp')
-                          : employee.photo
-                      }
-                      width={200}
-                    />
-                  </div>
-                </CRow>
-                <CRow className="justify-content-center mt-3">
-                  <CInputGroup className="mb-3">
-                    <CFormInput
-                      type="file"
-                      id="inputGroupFile02"
-                      accept="image/*"
-                      onChange={onChangePhoto}
-                    />
-                    <CInputGroupText
-                      component="label"
-                      htmlFor="inputGroupFile02"
-                      placeholder="Fotoğraf Seçiniz"
-                    ></CInputGroupText>
-                  </CInputGroup>
-                </CRow>
-                <CRow className="m-3 justify-content-center align-self-end">
-                  <Link to={`/employee/employeedetail/${id}`} className="col align-self-end">
-                    <CButton
-                      className="container align-self-end"
-                      style={{ backgroundColor: 'black' }}
-                      onClick={update}
-                    >
-                      Save
-                    </CButton>
-                  </Link>
-                  <Link to={`/employee/employeetable`} className="col align-self-end">
-                    <CButton
-                      className="container align-self-end"
-                      style={{ backgroundColor: 'black' }}
-                    >
-                      Exit
-                    </CButton>
-                  </Link>
-                </CRow>
-              </CRow>
-            </CCol>
+        <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
+          <CContainer>
+            <CRow className="justify-content-center">
+              <CCol md={5}>
+                <CCard className="mx-4">
+                  <CCardBody className="p-4">
+                    <CForm>
+                      <h1>Create New Leave Request</h1>
+                      <p className="text-medium-emphasis">Please fill in the information...</p>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilUser} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="text"
+                          id="floatingInputInvalid"
+                          floatingLabel="StartDate"
+                          placeholder="Start Date"
+                          autoComplete="startdate"
+                          onChange={(event) => {
+                            setStartDate(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="text"
+                          id="floatingInputInvalid"
+                          floatingLabel="EndDate"
+                          placeholder="End Date"
+                          autoComplete="endDate"
+                          onChange={(event) => {
+                            setEndDate(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="text"
+                          id="floatingInputInvalid"
+                          floatingLabel="Days"
+                          placeholder="Days"
+                          autoComplete="days"
+                          onChange={(event) => {
+                            setDays(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-4">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="text"
+                          id="floatingInputInvalid"
+                          floatingLabel="Type"
+                          placeholder="Type"
+                          autoComplete="type"
+                          onChange={(event) => {
+                            setType(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-4">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormSelect
+                          aria-label="Default select example"
+                          onChange={(event) => {
+                            setManagerid(event.target.value)
+                          }}
+                        >
+                          <option>Select your manager</option>
+                          {manager.map((type, index) => (
+                            <option key={index} value={type.id}>
+                              {type.name}
+                            </option>
+                          ))}
+                        </CFormSelect>
+                      </CInputGroup>
+                      <CRow className="d-grid gap-3 d-md-block ">
+                        <Link to={'/leaves/allmyleaves'}>
+                          <CButton size="lg" color="success" onClick={create}>
+                            Create Leave
+                          </CButton>
+                        </Link>
   
-            <CCol sm={4} className="detailfeed mb-5">
-              <CForm className="m-5">
-                <CRow className=" mb-4 ">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Name</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput type="text" placeholder={employee?.name} disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Middle Name</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput type="text" placeholder={employee?.middleName} disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Surname</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput type="text" placeholder={employee?.surname} disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Second Surname</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput type="text" placeholder={employee?.secondSurname} disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel htmlFor="inputEmail3" className="col-lg-2 col-form-label">
-                      Email
-                    </CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput type="email" placeholder={employee?.email} disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Address</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput
-                      placeholder={employee?.address == null ? 'empty' : employee.address}
-                      type="text"
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Phone</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput
-                      placeholder={employee?.phone == null ? 'empty' : employee.phone}
-                      type="text"
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Department</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.department} type="text" disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Profession</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.profession} type="text" disabled />
-                  </CCol>
-                </CRow>
-              </CForm>
-            </CCol>
-  
-            <CCol sm={4} className="detailfeed mb-5">
-              <CForm className="m-5">
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Date of Birth</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.dob} type="text" disabled />
-                  </CCol>
-                </CRow>
-  
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Place of Birth</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.placeOfBirth} type="text" disabled />
-                  </CCol>
-                </CRow>
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">ID Number</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.identityNumber} type="text" disabled />
-                  </CCol>
-                </CRow>
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Join Date</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.joinDate} type="text" disabled />
-                  </CCol>
-                </CRow>
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Resign Date</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.resignDate} type="text" disabled />
-                  </CCol>
-                </CRow>
-                <CRow className=" mb-4">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label">Status</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.status} type="text" disabled />
-                  </CCol>
-                </CRow>
-                <CRow className=" mb-4 ">
-                  <CCol sm={3}>
-                    <CFormLabel className="col col-form-label ">Company</CFormLabel>
-                  </CCol>
-                  <CCol sm={7} className=" mx-3 ">
-                    <CFormInput placeholder={employee?.company} type="text" disabled />
-                  </CCol>
-                </CRow>
-              </CForm>
-            </CCol>
-          </CRow>
-        </CContainer>
+                        <Link to={'/leaves/allmyleaves'}>
+                          <CButton size="lg" color="secondary" variant="outline">
+                            Go back to Home
+                          </CButton>
+                        </Link>
+                      </CRow>
+                    </CForm>
+                  </CCardBody>
+                </CCard>
+              </CCol>
+            </CRow>
+          </CContainer>
+        </div>
       </>
     )
   }
+  
   
   export default EmployeeLeave
   

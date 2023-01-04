@@ -102,7 +102,11 @@ const leaveSlice = createSlice({
   name: 'leave',
   initialState: initialStateLeave,
 
-  reducers: {},
+  reducers: {
+    setData: (state, action) => {
+      state.data = action.payload
+    },
+  },
   extraReducers: (build) => {
     build.addCase(createLeave.fulfilled, (state, action) => {
       state.leave = action.payload
@@ -174,4 +178,5 @@ const leaveSlice = createSlice({
     })
   },
 })
+export const { setData } = leaveSlice.actions
 export default leaveSlice.reducer

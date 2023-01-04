@@ -24,6 +24,7 @@ const Profile = React.lazy(() => import('./views/pages/profile/Profile'))
 const MyColleague = React.lazy(() => import('./views/pages/mycolleague/MyColleague'))
 const AllMyLeaves = React.lazy(() => import('./views/pages/allMyLeaves/AllMyLeaves'))
 const AllLeaves = React.lazy(() => import('./views/pages/allLeave/AllLeave'))
+const EmployeeLeave = React.lazy(() => import('./views/pages/employeeLeave/EmployeeLeave'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -44,6 +45,7 @@ const routes = [
   { path: '/mycolleague', name: 'My Colleague', element: MyColleague },
   { path: '/leaves/allmyleaves', name: 'All My Leaves', element: AllMyLeaves },
   { path: '/leaves/allleaves', name: 'All Leaves', element: AllLeaves },
+  { path: '/leaves/createleave', name: 'Create Leaves', element: EmployeeLeave },
 
   {
     path: '/employee/employeedetail/:id',

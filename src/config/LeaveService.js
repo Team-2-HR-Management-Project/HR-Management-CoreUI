@@ -2,7 +2,7 @@ import RestApis from './RestApiUrls'
 
 const leaveService = {
   leavecreate: RestApis.leaveService + '/leave/create',
-  leaveupdate: RestApis.leaveService + '7leave/update',
+  leaveupdate: RestApis.leaveService + '/leave/update',
   findallbymanager: RestApis.leaveService + '/leave/findallbymanager/',
   findallbyemployee: RestApis.leaveService + '/leave/findallbyemployee/',
   findallleaves: RestApis.leaveService + '/leave/findallleaves/',
