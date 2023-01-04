@@ -10,6 +10,7 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
+  CBadge,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
@@ -50,6 +51,9 @@ const AppHeader = () => {
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
+              <CBadge color="warning" className="ms-2">
+                42
+              </CBadge>
             </CNavLink>
           </CNavItem>
           <CNavItem>
