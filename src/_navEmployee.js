@@ -50,6 +50,18 @@ const _nav = [
       },
     ],
   },
+  {
+    component: CNavGroup,
+    name: 'My Leaves',
+    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Leaves',
+        to: '/leaves/allmyleaves',
+      },
+    ],
+  },
 ]
 
 export default _nav
