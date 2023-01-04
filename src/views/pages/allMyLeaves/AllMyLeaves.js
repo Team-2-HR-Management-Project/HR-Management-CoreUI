@@ -10,7 +10,7 @@ import {
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findbyTokenwithAxios, userSeeDetail } from 'src/store/features/UserSlice'
-import { getAllLeaves } from 'src/store/features/LeaveSlice'
+import { getMyAllLeaves } from 'src/store/features/LeaveSlice'
 
 import { Link } from 'react-router-dom'
 
@@ -45,7 +45,7 @@ import {
 } from '@coreui/icons'
 
 const EmployeeList = () => {
-  const data = useSelector((state) => state.leave.allLeaveList)
+  const data = useSelector((state) => state.leave.myLeaveList)
   const token = useSelector((state) => state.auth.token)
   const myuser = useSelector((state) => state.user.user)
 
@@ -55,7 +55,7 @@ const EmployeeList = () => {
   }
   const getUsers = () => {
     getUser()
-    dispatch(getAllLeaves(myuser.managerid))
+    dispatch(getMyAllLeaves(myuser.authid))
   }
 
   useEffect(() => {

@@ -83,6 +83,21 @@ export const getAllLeaves = createAsyncThunk('leave/getAllLeaves', async (payloa
   }
 })
 
+export const getMyAllLeaves = createAsyncThunk('leave/getMyAllLeaves', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.post(leaveService.findmyleaves + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
+
 const leaveSlice = createSlice({
   name: 'leave',
   initialState: initialStateLeave,
@@ -143,6 +158,18 @@ const leaveSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(getAllLeaves.pending, (state) => {
+      state.isLoading = true
+    })
+    build.addCase(getMyAllLeaves.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
+      state.myLeaveList = action.payload
+      state.isLoading = false
+    })
+    build.addCase(getMyAllLeaves.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(getMyAllLeaves.pending, (state) => {
       state.isLoading = true
     })
   },
