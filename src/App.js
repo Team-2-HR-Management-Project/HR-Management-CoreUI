@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from 'react'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
-import Login from './views/pages/login/Login'
 import PasswordReset from './views/pages/passwordreset/PasswordReset'
 import ForgotPassword from './views/pages/forgetpassword/ForgotPassword'
 
@@ -13,6 +12,7 @@ const loading = (
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+const Login = React.lazy(() => import('./views/pages/login/Login'))
 
 class App extends Component {
   render() {

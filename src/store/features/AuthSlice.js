@@ -216,17 +216,29 @@ const authSlice = createSlice({
     })
 
     build.addCase(fetchLogin.fulfilled, (state, action) => {
-      state.token = action.payload.token
-      state.authid = action.payload.id
-      state.isAuthanticated = true
-      console.log('logintoken...: ' + action.payload.token)
+      try {
+        state.token = action.payload.token
+        state.authid = action.payload.id
+        if (action.payload.code === 400) {
+          state.isAuthanticated = true
+        } else {
+          state.isAuthanticated = false
+          alert('Please check your email and password')
+        }
+
+        console.log('logintoken...: ' + action.payload.token)
+      } catch (error) {
+        alert('Login is not successful')
+      }
       state.isLoading = false
     })
     build.addCase(fetchLogin.pending, (state, action) => {
       state.isLoading = true
+      state.isAuthanticated = false
     })
     build.addCase(fetchLogin.rejected, (state, action) => {
       state.isLoading = false
+      state.isAuthanticated = false
       alert('Something went wrong')
     })
   },
