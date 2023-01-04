@@ -47,7 +47,7 @@ import {
 const EmployeeList = () => {
   const data = useSelector((state) => state.leave.myLeaveList)
   const token = useSelector((state) => state.auth.token)
-  const myuser = useSelector((state) => state.user.user)
+  const authid = useSelector((state) => state.auth.authid)
 
   const dispatch = useDispatch()
   const getUser = async () => {
@@ -55,7 +55,7 @@ const EmployeeList = () => {
   }
   const getUsers = () => {
     getUser()
-    dispatch(getMyAllLeaves(myuser.authid))
+    dispatch(getMyAllLeaves(authid))
   }
 
   useEffect(() => {

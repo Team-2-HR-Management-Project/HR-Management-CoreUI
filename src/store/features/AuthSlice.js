@@ -6,6 +6,7 @@ const initialStateAuth = {
   token: '',
   isAuthanticated: false,
   auth: {},
+  authid: null,
   authList: [],
   isLoading: false,
   isLoadingRegister: false,
@@ -216,6 +217,7 @@ const authSlice = createSlice({
 
     build.addCase(fetchLogin.fulfilled, (state, action) => {
       state.token = action.payload.token
+      state.authid = action.payload.id
       state.isAuthanticated = true
       console.log('logintoken...: ' + action.payload.token)
       state.isLoading = false

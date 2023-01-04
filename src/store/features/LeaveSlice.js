@@ -71,7 +71,7 @@ export const findallbyemployee = createAsyncThunk('leave/findallbyemployee', asy
 export const getAllLeaves = createAsyncThunk('leave/getAllLeaves', async (payload) => {
   try {
     console.log(payload)
-    const response = await axios.post(leaveService.findallleaves + payload, {
+    const response = await axios.get(leaveService.findallleaves + payload, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -86,7 +86,7 @@ export const getAllLeaves = createAsyncThunk('leave/getAllLeaves', async (payloa
 export const getMyAllLeaves = createAsyncThunk('leave/getMyAllLeaves', async (payload) => {
   try {
     console.log(payload)
-    const response = await axios.post(leaveService.findmyleaves + payload, {
+    const response = await axios.get(leaveService.findmyleaves + payload, {
       headers: {
         'Content-Type': 'application/json',
       },

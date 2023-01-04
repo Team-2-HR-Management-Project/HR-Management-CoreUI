@@ -47,15 +47,15 @@ import {
 const EmployeeList = () => {
   const data = useSelector((state) => state.leave.allLeaveList)
   const token = useSelector((state) => state.auth.token)
-  const myuser = useSelector((state) => state.user.user)
-
+  const managerid = useSelector((state) => state.user.currentUserId)
+  console.log(managerid)
   const dispatch = useDispatch()
   const getUser = async () => {
     const response = await dispatch(findbyTokenwithAxios({ token }))
   }
   const getUsers = () => {
     getUser()
-    dispatch(getAllLeaves(myuser.managerid))
+    dispatch(getAllLeaves(managerid))
   }
 
   useEffect(() => {
