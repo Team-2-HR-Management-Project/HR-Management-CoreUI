@@ -28,6 +28,7 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
+  cilLibrary,
 } from '@coreui/icons'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -48,6 +49,19 @@ const EmployeeLeave = () => {
   const [type, setType] = useState('')
   const [message, setMessage] = useState('')
   const [managerid, setManagerid] = useState(0)
+
+  const leaveType = [
+    'ANNUAL',
+    'MATERNITY',
+    'PATERNITY',
+    'CASUAL',
+    'BEREAVEMENT',
+    'COMPENSATORY',
+    'UNPAID',
+    'SICK',
+    'RELIGIOUS',
+    'PUBLIC',
+  ]
 
   const getManagers = () => {
     dispatch(getAllManagers())
@@ -87,10 +101,10 @@ const EmployeeLeave = () => {
 
   return (
     <>
-      <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
+      <div className="bg-light  d-flex flex-row align-items-center ">
         <CContainer>
           <CRow className="justify-content-center">
-            <CCol md={5}>
+            <CCol md={7}>
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
@@ -155,6 +169,24 @@ const EmployeeLeave = () => {
                           setType(event.target.value)
                         }}
                       />
+                    </CInputGroup>
+                    <CInputGroup className="mb-4">
+                      <CInputGroupText>
+                        <CIcon icon={cilLibrary} />
+                      </CInputGroupText>
+                      <CFormSelect
+                        aria-label="Default select example"
+                        onChange={(event) => {
+                          setType(event.target.value)
+                        }}
+                      >
+                        <option>Select your leave type</option>
+                        {leaveType.map((type, index) => (
+                          <option key={index} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </CFormSelect>
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
