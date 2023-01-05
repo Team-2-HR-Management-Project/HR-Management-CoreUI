@@ -39,9 +39,8 @@ const ForgetPassword = () => {
     }
     console.log(email)
   }
-
-  React.useEffect(() => {}, [isExist])
   console.log(isExist)
+  React.useEffect(() => {}, [isExist])
 
   if (isExist) {
     return <Navigate to="/login" />
