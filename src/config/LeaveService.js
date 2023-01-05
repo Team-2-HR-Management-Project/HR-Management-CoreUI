@@ -7,6 +7,7 @@ const leaveService = {
   findallbyemployee: RestApis.leaveService + '/leave/findallbyemployee/',
   findallleaves: RestApis.leaveService + '/leave/findallleaves/',
   findmyleaves: RestApis.leaveService + '/leave/findmyleaves/',
+  seedetailleave: RestApis.leaveService + '/leave/seedetailleave',
 }
 
 export default leaveService

@@ -80,6 +80,7 @@ const EmployeeList = () => {
                     <CTableHeaderCell className="text-center">Leave Type</CTableHeaderCell>
                     <CTableHeaderCell>Leave Days</CTableHeaderCell>
                     <CTableHeaderCell>Status</CTableHeaderCell>
+                    <CTableHeaderCell>Detail</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -108,6 +109,19 @@ const EmployeeList = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{type?.status}</div>
+                      </CTableDataCell>
+                      <CTableDataCell>
+                        <Link
+                          to={`/leaves/leavedetail/${type.id}`}
+                          className="col align-self-end"
+                        >
+                          <CButton
+                            className="container align-self-end"
+                            style={{ backgroundColor: 'black' }}
+                          >
+                            Show Details
+                          </CButton>
+                        </Link>
                       </CTableDataCell>
                     </CTableRow>
                   ))}

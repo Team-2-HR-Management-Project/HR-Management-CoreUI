@@ -179,6 +179,7 @@ const EmployeeLeave = () => {
                           <CIcon icon={cilDescription} />
                         </CInputGroupText>
                          */}
+<<<<<<< Updated upstream
                     <CFormTextarea
                       id="exampleFormControlTextarea1"
                       label="Your Message"
@@ -210,6 +211,39 @@ const EmployeeLeave = () => {
       </div>
     </>
   )
+=======
+                        <CFormTextarea
+                          id="exampleFormControlTextarea1"
+                          label="Your Message"
+                          rows={3}
+                          onChange={(event) => {
+                            setMessage(event.target.value)
+                          }}
+                        ></CFormTextarea>
+                          <br></br>
+                      <CRow className="d-grid gap-3 d-md-block ">
+                        <Link to={'/leaves/allmyleaves'}>
+                          <CButton size="lg" color="success" onClick={create}>
+                            Create Leave
+                          </CButton>
+                        </Link>
+  
+                        <Link to={'/leaves/allmyleaves'}>
+                          <CButton size="lg" color="secondary" variant="outline">
+                            Go back to Home
+                          </CButton>
+                        </Link>
+                      </CRow>
+                    </CForm>
+                  </CCardBody>
+                </CCard>
+              </CCol>
+            </CRow>
+          </CContainer>
+        </div>
+      </>
+    )
+>>>>>>> Stashed changes
 }
 
 export default EmployeeLeave

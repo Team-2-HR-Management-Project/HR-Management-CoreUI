@@ -4,11 +4,13 @@ import leaveService from 'src/config/LeaveService'
 
 const initialStateLeave = {
   leave: {},
+  otherleave: {},
   leaveList: [],
   allLeaveList: [],
   myLeaveList: [],
   otherLeaveList: [],
   leaveId: null,
+  otherleaveId: null,
   isLoading: false,
   error: {
     code: '',
@@ -98,6 +100,21 @@ export const getMyAllLeaves = createAsyncThunk('leave/getMyAllLeaves', async (pa
   }
 })
 
+export const seeDetailLeave = createAsyncThunk('leave/seedetailleave', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.get(leaveService.seedetailleave + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
+
 const leaveSlice = createSlice({
   name: 'leave',
   initialState: initialStateLeave,
@@ -120,7 +137,7 @@ const leaveSlice = createSlice({
       state.isLoading = true
     })
     build.addCase(updateLeave.fulfilled, (state, action) => {
-      state.leave = action.payload
+      state.otherleave = action.payload
       state.isLoading = false
     })
     build.addCase(updateLeave.rejected, (state, action) => {
@@ -154,7 +171,6 @@ const leaveSlice = createSlice({
     })
     build.addCase(getAllLeaves.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
-      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
       state.allLeaveList = action.payload
       state.isLoading = false
     })
@@ -166,7 +182,6 @@ const leaveSlice = createSlice({
     })
     build.addCase(getMyAllLeaves.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
-      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
       state.myLeaveList = action.payload
       state.isLoading = false
     })
@@ -174,6 +189,18 @@ const leaveSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(getMyAllLeaves.pending, (state) => {
+      state.isLoading = true
+    })
+    build.addCase(seeDetailLeave.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      state.otherleave = action.payload
+      state.otherleaveId=action.payload
+      state.isLoading = false
+    })
+    build.addCase(seeDetailLeave.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(seeDetailLeave.pending, (state) => {
       state.isLoading = true
     })
   },
