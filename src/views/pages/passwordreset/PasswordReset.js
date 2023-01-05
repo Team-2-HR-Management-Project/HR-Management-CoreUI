@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
 import Loading from 'src/components/loading/Loading'
+import { Navigate } from 'react-router-dom'
+
 const PasswordReset = () => {
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
@@ -52,102 +54,106 @@ const PasswordReset = () => {
 
   React.useEffect(() => {}, [isActivated])
 
-  return (
-    <>
-      {loading ? <Loading /> : null}
-      <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
-        <CContainer>
-          <CRow className="justify-content-center">
-            <CCol md={5}>
-              <CCard className="mx-4">
-                <CCardBody className="p-4">
-                  <CForm>
-                    <h1>New Password</h1>
-                    <p className="text-medium-emphasis">
-                      You can activate to your account by setting a new password.
-                    </p>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon icon={cilUser} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="email"
-                        id="floatingInputInvalid"
-                        floatingLabel="Email addresss"
-                        placeholder="name@example.com"
-                        autoComplete="email"
-                        onChange={(event) => {
-                          setEmail(event.target.value)
-                        }}
-                      />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon icon={cilControl} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="text"
-                        id="floatingInputInvalid"
-                        floatingLabel="Activation Code"
-                        placeholder="Activation Code"
-                        autoComplete="temp-password"
-                        onChange={(event) => {
-                          setTemppassword(event.target.value)
-                        }}
-                      />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon icon={cilLockLocked} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="password"
-                        id="floatingInputInvalid"
-                        floatingLabel="Password"
-                        placeholder="Password"
-                        autoComplete="new-password"
-                        onChange={(event) => {
-                          setPassword1(event.target.value)
-                        }}
-                      />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupText>
-                        <CIcon icon={cilLockLocked} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="password"
-                        id="floatingInputInvalid"
-                        floatingLabel="Confirm Password"
-                        placeholder="Confirm Password"
-                        autoComplete="new-password"
-                        onChange={(event) => {
-                          setPassword2(event.target.value)
-                        }}
-                      />
-                    </CInputGroup>
-                    <CRow className="d-grid gap-3 d-md-block ">
-                      <Link to={isActivated ? '/login' : '/createpassword'}>
-                        <CButton size="lg" color="success" onClick={createPassword}>
-                          Create Password
-                        </CButton>
-                      </Link>
+  if (isActivated) {
+    return <Navigate to="/login" />
+  } else {
+    return (
+      <>
+        {loading ? <Loading /> : null}
+        <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
+          <CContainer>
+            <CRow className="justify-content-center">
+              <CCol md={5}>
+                <CCard className="mx-4">
+                  <CCardBody className="p-4">
+                    <CForm>
+                      <h1>New Password</h1>
+                      <p className="text-medium-emphasis">
+                        You can activate to your account by setting a new password.
+                      </p>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilUser} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="email"
+                          id="floatingInputInvalid"
+                          floatingLabel="Email addresss"
+                          placeholder="name@example.com"
+                          autoComplete="email"
+                          onChange={(event) => {
+                            setEmail(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilControl} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="text"
+                          id="floatingInputInvalid"
+                          floatingLabel="Activation Code"
+                          placeholder="Activation Code"
+                          autoComplete="temp-password"
+                          onChange={(event) => {
+                            setTemppassword(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-3">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="password"
+                          id="floatingInputInvalid"
+                          floatingLabel="Password"
+                          placeholder="Password"
+                          autoComplete="new-password"
+                          onChange={(event) => {
+                            setPassword1(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CInputGroup className="mb-4">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          type="password"
+                          id="floatingInputInvalid"
+                          floatingLabel="Confirm Password"
+                          placeholder="Confirm Password"
+                          autoComplete="new-password"
+                          onChange={(event) => {
+                            setPassword2(event.target.value)
+                          }}
+                        />
+                      </CInputGroup>
+                      <CRow className="d-grid gap-3 d-md-block ">
+                        <Link to={isActivated ? '/login' : '/createpassword'}>
+                          <CButton size="lg" color="success" onClick={createPassword}>
+                            Create Password
+                          </CButton>
+                        </Link>
 
-                      <Link to={'/login'}>
-                        <CButton size="lg" color="secondary" variant="outline">
-                          Go back to Login
-                        </CButton>
-                      </Link>
-                    </CRow>
-                  </CForm>
-                </CCardBody>
-              </CCard>
-            </CCol>
-          </CRow>
-        </CContainer>
-      </div>
-    </>
-  )
+                        <Link to={'/login'}>
+                          <CButton size="lg" color="secondary" variant="outline">
+                            Go back to Login
+                          </CButton>
+                        </Link>
+                      </CRow>
+                    </CForm>
+                  </CCardBody>
+                </CCard>
+              </CCol>
+            </CRow>
+          </CContainer>
+        </div>
+      </>
+    )
+  }
 }
 
 export default PasswordReset

@@ -182,9 +182,14 @@ const authSlice = createSlice({
     })
     build.addCase(fetchCreatePassword.fulfilled, (state, action) => {
       try {
-        state.isActivated = true
         alert('successfully activated')
         state.isLoading = false
+        if (action.payload.code === 300) {
+          state.isActivated = true
+        } else {
+          state.isActivated = false
+          alert('Please check your email, activation code and password')
+        }
       } catch (error) {
         console.log(error)
         alert('Something went wrong!')
@@ -194,9 +199,12 @@ const authSlice = createSlice({
 
     build.addCase(fetchCreatePassword.pending, (state, action) => {
       state.isLoading = true
+      state.isActivated = false
     })
     build.addCase(fetchCreatePassword.rejected, (state, action) => {
       state.alertMessage = state.error.message
+      state.isActivated = false
+      alert('Something went wrong')
     })
     build.addCase(fecthRegister.fulfilled, (state, action) => {
       state.auth = action.payload
