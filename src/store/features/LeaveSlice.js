@@ -194,7 +194,7 @@ const leaveSlice = createSlice({
     build.addCase(seeDetailLeave.fulfilled, (state, action) => {
       console.log('Extra Reducer', action.payload)
       state.otherleave = action.payload
-      state.otherleaveId=action.payload
+      state.otherleaveId = action.payload
       state.isLoading = false
     })
     build.addCase(seeDetailLeave.rejected, (state) => {

@@ -111,10 +111,7 @@ const EmployeeList = () => {
                         <div>{type?.status}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <Link
-                          to={`/leaves/leavedetail/${type.id}`}
-                          className="col align-self-end"
-                        >
+                        <Link to={`/leaves/leavedetail/${type.id}`} className="col align-self-end">
                           <CButton
                             className="container align-self-end"
                             style={{ backgroundColor: 'black' }}

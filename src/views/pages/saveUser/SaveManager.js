@@ -37,15 +37,15 @@ const SaveManager = () => {
   }
 
   const createManager = async () => {
-    if (name === '') {
+    if (name === '' || name.length < 2 || name.length > 32) {
       alert('Please enter any name!')
-    } else if (surname === '') {
+    } else if (surname === '' || surname.length < 2 || surname.length > 32) {
       alert('Please enter any surname!')
-    } else if (email === '') {
+    } else if (email === '' || !email.includes('@') || !email.includes('.')) {
       alert('Please enter any email!')
-    } else if (phone === '') {
+    } else if (phone === '' || phone.length < 10 || phone.length > 11) {
       alert('Please enter any phone!')
-    } else if (companyid === '') {
+    } else if (companyid === '' || companyid === 0) {
       alert('Please select any company!')
     } else {
       dispatch(
