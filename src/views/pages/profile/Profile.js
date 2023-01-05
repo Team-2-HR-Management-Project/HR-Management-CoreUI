@@ -13,12 +13,13 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { findbyTokenwithAxios, updateAllUser } from 'src/store/features/UserSlice'
+import { findbyToken2, updateAllUser } from 'src/store/features/UserSlice'
 
 const Profile = () => {
   const dispatch = useDispatch()
   const employee = useSelector((state) => state.user.user)
   const token = useSelector((state) => state.auth.token)
+
   const [phone, setPhone] = useState(employee?.phone)
   const [address, setAddress] = useState(employee?.address)
   const [photo, setPhoto] = useState(employee?.photo)
@@ -41,7 +42,8 @@ const Profile = () => {
   const update = () => {
     dispatch(
       updateAllUser({
-        id: employee.authid,
+        id: employee.id,
+        authid: employee.authid,
         address: address == null ? employee.address : address,
         photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,
@@ -57,7 +59,7 @@ const Profile = () => {
     )
   }
   const getUser = () => {
-    dispatch(findbyTokenwithAxios(token))
+    dispatch(findbyToken2(token))
   }
   useEffect(() => {
     getUser()

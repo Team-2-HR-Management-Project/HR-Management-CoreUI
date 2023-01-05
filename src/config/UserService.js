@@ -2,6 +2,7 @@ import RestApis from './RestApiUrls'
 
 const userService = {
   findbytoken: RestApis.userService + '/user/findbytoken',
+  findbytoken2: RestApis.userService + '/user/findbytokenn/',
   findall: RestApis.userService + '/user/findall',
   findbyid: RestApis.userService + '/user/finduserbyid/',
   usercreate: RestApis.userService + '/user/create',
