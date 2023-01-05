@@ -19,7 +19,10 @@ const Profile = () => {
   const dispatch = useDispatch()
   const employee = useSelector((state) => state.user.user)
   const token = useSelector((state) => state.auth.token)
+
   const [phone, setPhone] = useState(employee?.phone)
+  const [name, setName] = useState(employee?.name)
+  const [surname, setSurname] = useState(employee?.surname)
   const [address, setAddress] = useState(employee?.address)
   const [photo, setPhoto] = useState(employee?.photo)
   const [middleName, setMiddleName] = useState(employee?.middleName)
@@ -42,10 +45,14 @@ const Profile = () => {
     if (employee.identityNumber.size !== 11) {
       alert('TC can be 11 characters!')
     } else {
+      getUser()
       dispatch(
         updateAllUser({
-          id: employee.authid,
+          id: employee.id,
+          authid: employee.authid,
           address: address == null ? employee.address : address,
+          name: name == null ? employee.name : name,
+          surname: surname == null ? employee.surname : surname,
           photo: photo == null ? employee.photo : photo,
           phone: phone == null ? employee.phone : phone,
           middleName: middleName == null ? employee.middleName : middleName,
@@ -61,7 +68,7 @@ const Profile = () => {
     }
   }
   const getUser = () => {
-    dispatch(findbyTokenwithAxios(token))
+    dispatch(findbyTokenwithAxios({ token }))
   }
   useEffect(() => {
     getUser()
@@ -131,7 +138,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Name</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.name} disabled />
+                  <CFormInput
+                    placeholder={employee?.name == null ? 'empty' : employee.name}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
@@ -153,7 +164,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Surname</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.surname} disabled />
+                  <CFormInput
+                    placeholder={employee?.surname == null ? 'empty' : employee.surname}
+                    type="text"
+                    onChange={(e) => setSurname(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
@@ -202,6 +217,8 @@ const Profile = () => {
                   <CFormInput
                     placeholder={employee?.phone == null ? 'empty' : employee.phone}
                     type="text"
+                    maxLength="11"
+                    minLength="11"
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </CCol>
