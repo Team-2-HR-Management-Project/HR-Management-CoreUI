@@ -5,7 +5,7 @@ const authService = {
   login: RestApis.authService + '/auth/login',
   registerbymail: RestApis.authService + '/auth/registerbymail',
   activatebypassword: RestApis.authService + '/auth/createpassword',
-  forgetpassword: RestApis.authService + '/auth/forgetpassword',
+  forgetpassword: RestApis.authService + '/auth/forgetpasswordmail', //mail yazıyormus javada
 }
 
 export default authService
