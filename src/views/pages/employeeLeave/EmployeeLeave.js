@@ -157,21 +157,6 @@ const EmployeeLeave = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon icon={cilLockLocked} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="text"
-                        id="floatingInputInvalid"
-                        floatingLabel="Type"
-                        placeholder="Type"
-                        autoComplete="type"
-                        onChange={(event) => {
-                          setType(event.target.value)
-                        }}
-                      />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupText>
                         <CIcon icon={cilLibrary} />
                       </CInputGroupText>
                       <CFormSelect
