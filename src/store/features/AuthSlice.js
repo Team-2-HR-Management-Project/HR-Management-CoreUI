@@ -146,11 +146,24 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (build) => {
+    //build.addCase(forgetPassword.fulfilled, (state, action) => {
+
+    //state.auth = action.payload
+    //state.isLoading = false
+    // state.isExist = true
+    //alert('Reset Password Activation code sent to your email.')
+    //})
     build.addCase(forgetPassword.fulfilled, (state, action) => {
-      state.auth = action.payload
-      state.isLoading = false
-      state.isExist = true
       alert('Reset Password Activation code sent to your email.')
+      state.isLoading = false
+      if (action.payload.code === 600) {
+        state.isExist = true
+        console.log(state.isExist + 'reducer')
+      } else {
+        state.isExist = false
+        alert('Please check your email')
+      }
+      state.isLoading = false
     })
 
     build.addCase(forgetPassword.pending, (state) => {

@@ -26,13 +26,14 @@ const ForgetPassword = () => {
   const loading = useSelector((state) => state.auth.isLoading)
   const dispatch = useDispatch()
 
-  const forgetPassword = async () => {
+  const forgetPasswordd = async () => {
+    // method ismi
     if (email === '') {
       alert('Please enter your email.')
     } else {
       dispatch(
         forgetPassword({
-          email: auth.email,
+          email: email, //mail setlemesi
         }),
       )
     }
@@ -96,7 +97,7 @@ const ForgetPassword = () => {
                           </CButton>
                         </Link>*/}
                         <Link>
-                          <CButton onClick={forgetPassword} size="lg" color="success">
+                          <CButton onClick={forgetPasswordd} size="lg" color="success">
                             Send Activation Code
                           </CButton>
                         </Link>
