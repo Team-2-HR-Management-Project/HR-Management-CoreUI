@@ -36,21 +36,6 @@ export const findbyTokenwithAxios = createAsyncThunk('user/findbytoken', async (
   }
 })
 
-export const findbyToken2 = createAsyncThunk('user/findbytoken2', async (payload) => {
-  try {
-    console.log(payload)
-    const response = await axios.get(userService.findbytoken2 + payload, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    return response.data
-  } catch (error) {
-    return error.response.data
-  }
-})
-
 export const userSeeDetail = createAsyncThunk('user/userseedetail', async (payload) => {
   try {
     console.log(payload)
@@ -258,20 +243,6 @@ const userSlice = createSlice({
       state.isLoading = true
     })
 
-    build.addCase(findbyToken2.fulfilled, (state, action) => {
-      state.user = action.payload
-      state.currentUserId = action.payload.id
-      state.isLoading = false
-    })
-
-    build.addCase(findbyToken2.rejected, (state, action) => {
-      state.error = action.payload
-      state.isLoading = false
-    })
-    build.addCase(findbyToken2.pending, (state, action) => {
-      state.isLoading = true
-    })
-
     build.addCase(userSeeDetail.fulfilled, (state, action) => {
       state.otherUserProfile = action.payload
       state.otherUserId = action.payload
@@ -325,6 +296,7 @@ const userSlice = createSlice({
     build.addCase(updateAllUser.fulfilled, (state, action) => {
       state.authid = action.payload.authid
       state.user = action.payload
+      console.log('user' + action.payload)
       state.isLoading = false
     })
     build.addCase(updateAllUser.rejected, (state) => {

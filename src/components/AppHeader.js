@@ -51,9 +51,6 @@ const AppHeader = () => {
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
-              <CBadge color="warning" className="ms-2">
-                42
-              </CBadge>
             </CNavLink>
           </CNavItem>
           <CNavItem>

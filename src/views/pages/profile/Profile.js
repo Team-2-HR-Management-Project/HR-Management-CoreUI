@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { findbyToken2, updateAllUser } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios, updateAllUser } from 'src/store/features/UserSlice'
 
 const Profile = () => {
   const dispatch = useDispatch()
@@ -21,6 +21,8 @@ const Profile = () => {
   const token = useSelector((state) => state.auth.token)
 
   const [phone, setPhone] = useState(employee?.phone)
+  const [name, setName] = useState(employee?.name)
+  const [surname, setSurname] = useState(employee?.surname)
   const [address, setAddress] = useState(employee?.address)
   const [photo, setPhoto] = useState(employee?.photo)
   const [middleName, setMiddleName] = useState(employee?.middleName)
@@ -40,11 +42,14 @@ const Profile = () => {
     fileReader.readAsDataURL(file)
   }
   const update = () => {
+    getUser()
     dispatch(
       updateAllUser({
         id: employee.id,
         authid: employee.authid,
         address: address == null ? employee.address : address,
+        name: name == null ? employee.name : name,
+        surname: surname == null ? employee.surname : surname,
         photo: photo == null ? employee.photo : photo,
         phone: phone == null ? employee.phone : phone,
         middleName: middleName == null ? employee.middleName : middleName,
@@ -59,7 +64,7 @@ const Profile = () => {
     )
   }
   const getUser = () => {
-    dispatch(findbyToken2(token))
+    dispatch(findbyTokenwithAxios({ token }))
   }
   useEffect(() => {
     getUser()
@@ -129,7 +134,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Name</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.name} disabled />
+                  <CFormInput
+                    placeholder={employee?.name == null ? 'empty' : employee.name}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
@@ -151,7 +160,11 @@ const Profile = () => {
                   <CFormLabel className="col col-form-label">Surname</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={employee?.surname} disabled />
+                  <CFormInput
+                    placeholder={employee?.surname == null ? 'empty' : employee.surname}
+                    type="text"
+                    onChange={(e) => setSurname(e.target.value)}
+                  />
                 </CCol>
               </CRow>
 
