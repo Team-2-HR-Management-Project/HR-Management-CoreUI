@@ -73,9 +73,9 @@ const EmployeeLeave = () => {
   }
 
   const create = () => {
-    if (startDate === '') {
+    if (startDate === '' || startDate > endDate) {
       alert('Please enter the leave start date!')
-    } else if (endDate === '') {
+    } else if (endDate === '' || endDate < startDate) {
       alert('Please enter the leave end date!')
     } else if (days === '') {
       alert('Please enter the number of leave days!')
