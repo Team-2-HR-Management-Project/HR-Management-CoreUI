@@ -295,12 +295,7 @@ const userSlice = createSlice({
 
     build.addCase(updateAllUser.fulfilled, (state, action) => {
       state.authid = action.payload.authid
-<<<<<<< Updated upstream
       state.user = action.payload
-      console.log('user' + action.payload)
-=======
-      state.otherUserProfile = action.payload
->>>>>>> Stashed changes
       state.isLoading = false
     })
     build.addCase(updateAllUser.rejected, (state) => {
