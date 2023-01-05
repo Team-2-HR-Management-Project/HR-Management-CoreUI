@@ -48,6 +48,11 @@ const _nav = [
         name: 'My Colleague',
         to: '/mycolleague',
       },
+      {
+        component: CNavItem,
+        name: 'Profile',
+        to: '/profile',
+      },
     ],
   },
   {

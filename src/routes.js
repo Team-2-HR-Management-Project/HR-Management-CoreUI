@@ -41,7 +41,7 @@ const routes = [
   { path: '/manager/managerlist', name: 'Manager List', element: ManagerList },
   { path: '/page500', name: 'page 500', element: Page500 },
   { path: '/login', name: 'login', element: Login },
-  { path: '/profile/:id', name: 'profile', element: Profile },
+  { path: '/profile', name: 'profile', element: Profile },
   { path: '/mycolleague', name: 'My Colleague', element: MyColleague },
   { path: '/leaves/allmyleaves', name: 'All My Leaves', element: AllMyLeaves },
   { path: '/leaves/allleaves', name: 'All Leaves', element: AllLeaves },

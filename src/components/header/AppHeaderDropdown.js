@@ -54,7 +54,7 @@ const AppHeaderDropdown = () => {
         <CDropdownHeader className="bg-light fw-semibold py-2">
           Hello {myuser.name} {myuser.surname}
         </CDropdownHeader>
-        <Link to={`/profile/${myuser.authid}`} className="my-dropdown col align-self-end">
+        <Link to={`/profile`} className="my-dropdown col align-self-end">
           <CIcon icon={cilUser} className="me-2" />
           Profile
         </Link>

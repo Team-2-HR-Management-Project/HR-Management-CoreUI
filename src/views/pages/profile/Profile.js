@@ -12,13 +12,13 @@ import {
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { findbyTokenwithAxios, updateAllUser } from 'src/store/features/UserSlice'
 
 const Profile = () => {
-  const { id } = useParams()
   const dispatch = useDispatch()
-  const employee = useSelector((state) => state.user.otherUserProfile)
+  const employee = useSelector((state) => state.user.user)
+  const token = useSelector((state) => state.auth.token)
   const [phone, setPhone] = useState(employee?.phone)
   const [address, setAddress] = useState(employee?.address)
   const [photo, setPhoto] = useState(employee?.photo)
@@ -30,7 +30,6 @@ const Profile = () => {
   const [identityNumber, setIdentityNumber] = useState(employee?.identityNumber)
   const [joinDate, setJoinDate] = useState(employee?.joinDate)
   const [resignDate, setResignDate] = useState(employee?.resignDate)
-
   const onChangePhoto = (event) => {
     const file = event.target.files[0]
     const fileReader = new FileReader()
@@ -39,17 +38,6 @@ const Profile = () => {
     }
     fileReader.readAsDataURL(file)
   }
-  const myuser = useSelector((state) => state.user.user)
-  const token = useSelector((state) => state.auth.token)
-
-  const getUser = async () => {
-    const response = await dispatch(findbyTokenwithAxios({ token }))
-  }
-
-  useEffect(() => {
-    getUser()
-  }, [])
-
   const update = () => {
     dispatch(
       updateAllUser({
@@ -68,9 +56,11 @@ const Profile = () => {
       }),
     )
   }
-
+  const getUser = () => {
+    dispatch(findbyTokenwithAxios(token))
+  }
   useEffect(() => {
-    dispatch(updateAllUser(id), getUser())
+    getUser()
   }, [])
   return (
     <>
@@ -109,7 +99,7 @@ const Profile = () => {
                 </CInputGroup>
               </CRow>
               <CRow className="m-3 justify-content-center align-self-end">
-                <Link to={`/profile/${id}`} className="col align-self-end">
+                <Link to={`/profile`} className="col align-self-end">
                   <CButton
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
