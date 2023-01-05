@@ -7,6 +7,7 @@ import {
   CCardImage,
   CCardText,
   CCardTitle,
+  CImage,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllColleague, findbyTokenwithAxios } from 'src/store/features/UserSlice'
@@ -92,8 +93,8 @@ const EmployeeList = () => {
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar
-                          size="md"
+                        <CImage
+                          className="avatar-circle-size"
                           src={
                             type.photo == null
                               ? require('../../../assets/person/user.webp')

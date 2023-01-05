@@ -114,6 +114,19 @@ export const seeDetailLeave = createAsyncThunk('leave/seedetailleave', async (pa
     return error.response.data
   }
 })
+export const seeLeaveDetails = createAsyncThunk('leave/seeLeaveDetails', async (payload) => {
+  try {
+    const response = await axios.post(leaveService.seeleavedetails, payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': true,
+      },
+    })
+    return response.data
+  } catch (err) {
+    return err.response.data
+  }
+})
 
 const leaveSlice = createSlice({
   name: 'leave',
@@ -201,6 +214,18 @@ const leaveSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(seeDetailLeave.pending, (state) => {
+      state.isLoading = true
+    })
+    build.addCase(seeLeaveDetails.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      state.otherleave = action.payload
+      state.otherleaveId = action.payload.id
+      state.isLoading = false
+    })
+    build.addCase(seeLeaveDetails.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(seeLeaveDetails.pending, (state) => {
       state.isLoading = true
     })
   },

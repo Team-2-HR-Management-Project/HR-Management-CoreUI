@@ -13,17 +13,28 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { seeLeaveDetails, updateLeave } from 'src/store/features/LeaveSlice'
+import { seeDetailLeave, updateLeave } from 'src/store/features/LeaveSlice'
+import { userSeeDetail } from 'src/store/features/UserSlice'
 
 const ManagerLeaveDetail = () => {
   const { id } = useParams()
-  console.log(id)
   const dispatch = useDispatch()
+  const employee = useSelector((state) => state.user.otherUserProfile)
   const leave = useSelector((state) => state.leave.otherleave)
+  const [status, setStatus] = useState(leave.status)
+
+  const update = () => {
+    dispatch(
+      updateLeave({
+        authid: employee.authid,
+        status: leave.status,
+      }),
+    )
+  }
 
   useEffect(() => {
-    dispatch(seeLeaveDetails(id))
-  }, [])
+    dispatch(userSeeDetail(id), seeDetailLeave(leave.id))
+  }, [leave.id])
   return (
     <>
       <CContainer>
@@ -37,9 +48,9 @@ const ManagerLeaveDetail = () => {
                     align="center"
                     rounded
                     src={
-                      leave.photo == null
+                      employee.photo == null
                         ? require('../../../assets/person/user.webp')
-                        : leave.photo
+                        : employee.photo
                     }
                     width={200}
                   />
@@ -50,6 +61,7 @@ const ManagerLeaveDetail = () => {
                   <CButton
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
+                    onClick={update}
                   >
                     Save
                   </CButton>
@@ -73,7 +85,7 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label">Name</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={leave?.name} disabled />
+                  <CFormInput type="text" placeholder={employee?.name} disabled />
                 </CCol>
               </CRow>
 
@@ -82,7 +94,7 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label">Surname</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput type="text" placeholder={leave?.surname} disabled />
+                  <CFormInput type="text" placeholder={employee?.surname} disabled />
                 </CCol>
               </CRow>
 
@@ -91,7 +103,7 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label">Department</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave?.department} type="text" disabled />
+                  <CFormInput placeholder={employee?.department} type="text" disabled />
                 </CCol>
               </CRow>
 
@@ -100,7 +112,7 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label">Profession</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave?.profession} type="text" disabled />
+                  <CFormInput placeholder={employee?.profession} type="text" disabled />
                 </CCol>
               </CRow>
 
@@ -109,7 +121,7 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label">ID Number</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave?.identityNumber} type="text" disabled />
+                  <CFormInput placeholder={employee?.identityNumber} type="text" disabled />
                 </CCol>
               </CRow>
             </CForm>
@@ -162,7 +174,11 @@ const ManagerLeaveDetail = () => {
                   <CFormLabel className="col col-form-label ">Status</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave.status} type="text" />
+                  <CFormInput
+                    placeholder={leave.status}
+                    type="text"
+                    onChange={(e) => setStatus(e.target.value)}
+                  />
                 </CCol>
               </CRow>
             </CForm>
