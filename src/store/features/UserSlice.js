@@ -73,6 +73,25 @@ export const getAllEmployees = createAsyncThunk('employeeList/getAllEmployees', 
     return error.response.data
   }
 })
+
+export const getAllMyManagers = createAsyncThunk(
+  'employeeList/getAllMyManagers',
+  async (payload) => {
+    try {
+      console.log(payload)
+      const response = await axios.get(userService.findallmanagerbycompanyid + payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      return response.data
+    } catch (error) {
+      return error.response.data
+    }
+  },
+)
+
 export const getAllColleague = createAsyncThunk('myColleague/getAllColleague', async (payload) => {
   try {
     console.log(payload)
@@ -292,7 +311,18 @@ const userSlice = createSlice({
     build.addCase(getAllManagers.pending, (state) => {
       state.isLoading = true
     })
-
+    build.addCase(getAllMyManagers.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      // Eğer Axios kkullanıyor isen payload tan sonra araya data eklemelisin
+      state.managerList = action.payload
+      state.isLoading = false
+    })
+    build.addCase(getAllMyManagers.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(getAllMyManagers.pending, (state) => {
+      state.isLoading = true
+    })
     build.addCase(updateAllUser.fulfilled, (state, action) => {
       state.authid = action.payload.authid
       state.user = action.payload

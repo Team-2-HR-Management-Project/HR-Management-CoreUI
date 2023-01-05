@@ -11,6 +11,7 @@ const userService = {
   userseedetail: RestApis.userService + '/user/seedetail/',
   findallmanager: RestApis.userService + '/user/findallmanager',
   findallemployee: RestApis.userService + '/user/findallemployee/',
+  findallmanagerbycompanyid: RestApis.userService + '/user/findallmanagerbycompanyid/',
   userupdateall: RestApis.userService + '/user/updateall/',
   findallcolleague: RestApis.userService + '/user/findallcolleague/',
 }

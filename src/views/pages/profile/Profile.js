@@ -42,30 +42,30 @@ const Profile = () => {
     fileReader.readAsDataURL(file)
   }
   const update = () => {
-    if (employee.identityNumber.size !== 11) {
-      alert('TC can be 11 characters!')
-    } else {
-      getUser()
-      dispatch(
-        updateAllUser({
-          id: employee.id,
-          authid: employee.authid,
-          address: address == null ? employee.address : address,
-          name: name == null ? employee.name : name,
-          surname: surname == null ? employee.surname : surname,
-          photo: photo == null ? employee.photo : photo,
-          phone: phone == null ? employee.phone : phone,
-          middleName: middleName == null ? employee.middleName : middleName,
-          secondSurname: secondSurname == null ? employee.secondSurname : secondSurname,
-          profession: profession == null ? employee.profession : profession,
-          dob: dob == null ? employee.dob : dob,
-          placeOfBirth: placeOfBirth == null ? employee.placeOfBirth : placeOfBirth,
-          identityNumber: identityNumber == null ? employee.identityNumber : identityNumber,
-          joinDate: joinDate == null ? employee.joinDate : joinDate,
-          resignDate: resignDate == null ? employee.resignDate : resignDate,
-        }),
-      )
-    }
+    // if (employee.identityNumber.size !== 11) {
+    //   alert('TC can be 11 characters!')
+    // } else {
+    getUser()
+    dispatch(
+      updateAllUser({
+        id: employee.id,
+        authid: employee.authid,
+        address: address == null ? employee.address : address,
+        name: name == null ? employee.name : name,
+        surname: surname == null ? employee.surname : surname,
+        photo: photo == null ? employee.photo : photo,
+        phone: phone == null ? employee.phone : phone,
+        middleName: middleName == null ? employee.middleName : middleName,
+        secondSurname: secondSurname == null ? employee.secondSurname : secondSurname,
+        profession: profession == null ? employee.profession : profession,
+        dob: dob == null ? employee.dob : dob,
+        placeOfBirth: placeOfBirth == null ? employee.placeOfBirth : placeOfBirth,
+        identityNumber: identityNumber == null ? employee.identityNumber : identityNumber,
+        joinDate: joinDate == null ? employee.joinDate : joinDate,
+        resignDate: resignDate == null ? employee.resignDate : resignDate,
+      }),
+    )
+    // }
   }
   const getUser = () => {
     dispatch(findbyTokenwithAxios({ token }))

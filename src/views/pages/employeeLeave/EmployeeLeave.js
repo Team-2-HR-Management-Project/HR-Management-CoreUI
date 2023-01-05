@@ -34,14 +34,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { createLeave } from 'src/store/features/LeaveSlice'
-import { getAllManagers } from 'src/store/features/ManagerSlice'
+import { getAllMyManagers, findbyTokenwithAxios } from 'src/store/features/UserSlice'
 
 const EmployeeLeave = () => {
   const dispatch = useDispatch()
   const manager = useSelector((state) => state.user.managerList)
   const employeeId = useSelector((state) => state.user.currentUserId)
   const authId = useSelector((state) => state.auth.authid)
-  const leave = useSelector((state) => state.leave.leave)
+  const employee = useSelector((state) => state.user.user)
+  const token = useSelector((state) => state.auth.token)
   const list = useSelector((state) => state.leave.leaveList)
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
@@ -64,7 +65,11 @@ const EmployeeLeave = () => {
   ]
 
   const getManagers = () => {
-    dispatch(getAllManagers())
+    dispatch(getAllMyManagers(employee.companyid))
+  }
+
+  const getUser = () => {
+    dispatch(findbyTokenwithAxios({ token }))
   }
 
   const create = () => {
@@ -96,6 +101,7 @@ const EmployeeLeave = () => {
   console.log(list)
 
   useEffect(() => {
+    getUser()
     getManagers()
   }, [])
 

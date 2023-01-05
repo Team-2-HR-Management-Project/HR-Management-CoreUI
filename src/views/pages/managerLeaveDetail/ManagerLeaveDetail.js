@@ -1,3 +1,5 @@
+import { cilCheck, cilDelete, cilExitToApp, cilX } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
 import {
   CImage,
   CForm,
@@ -5,6 +7,7 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CFormTextarea,
   CCol,
   CButton,
   CFormLabel,
@@ -13,17 +16,18 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { seeLeaveDetails, updateLeave } from 'src/store/features/LeaveSlice'
+import { seeLeaveDetails, rejectLeave, approveLeave } from 'src/store/features/LeaveSlice'
 
 const ManagerLeaveDetail = () => {
   const { id } = useParams()
   console.log(id)
   const dispatch = useDispatch()
   const leave = useSelector((state) => state.leave.otherleave)
+  const changeStatus = useSelector((state) => state.leave.changeStatus)
 
   useEffect(() => {
-    dispatch(seeLeaveDetails(id))
-  }, [])
+    dispatch(seeLeaveDetails({ id: id }))
+  }, [changeStatus])
   return (
     <>
       <CContainer>
@@ -46,15 +50,35 @@ const ManagerLeaveDetail = () => {
                 </div>
               </CRow>
               <CRow className="m-3 justify-content-center align-self-end">
-                <Link to={`/leaves/leavedetail/${id}`} className="col align-self-end">
-                  <CButton
-                    className="container align-self-end"
-                    style={{ backgroundColor: 'black' }}
-                  >
-                    Save
-                  </CButton>
-                </Link>
-                <Link to={`/leaves/allleaves`} className="col align-self-end">
+                <CRow className="justify-content-center ">
+                  <CCol xs={4}>
+                    <CButton
+                      className="gap-2 m-2"
+                      shape="rounded-pill"
+                      size="lg"
+                      color="success"
+                      onClick={() => dispatch(approveLeave(leave.id))}
+                    >
+                      <CIcon icon={cilCheck} />
+                    </CButton>
+                  </CCol>
+                  <CCol xs={4}>
+                    <CButton
+                      className="gap-2 m-2"
+                      shape="rounded-pill"
+                      color="danger"
+                      size="lg"
+                      onClick={() => dispatch(rejectLeave(leave.id))}
+                    >
+                      <CIcon icon={cilX} />
+                    </CButton>
+                  </CCol>
+                </CRow>
+
+                <p className="justify-content-center detailLeaveText">
+                  You can change the status of this leave request.
+                </p>
+                <Link to={`/leaves/allleaves`} className="col align-self-end m-5">
                   <CButton
                     className="container align-self-end"
                     style={{ backgroundColor: 'black' }}
@@ -112,6 +136,19 @@ const ManagerLeaveDetail = () => {
                   <CFormInput placeholder={leave?.identityNumber} type="text" disabled />
                 </CCol>
               </CRow>
+              <CRow className=" mb-4">
+                <CCol sm={3}>
+                  <CFormLabel className="col col-form-label">Message</CFormLabel>
+                </CCol>
+                <CCol sm={7} className=" mx-3 ">
+                  <CFormTextarea
+                    id="exampleFormControlTextarea1"
+                    placeholder={leave.message}
+                    rows={3}
+                    disabled
+                  ></CFormTextarea>
+                </CCol>
+              </CRow>
             </CForm>
           </CCol>
 
@@ -151,18 +188,10 @@ const ManagerLeaveDetail = () => {
               </CRow>
               <CRow className=" mb-4 ">
                 <CCol sm={3}>
-                  <CFormLabel className="col col-form-label ">Message</CFormLabel>
-                </CCol>
-                <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave.message} type="text" disabled />
-                </CCol>
-              </CRow>
-              <CRow className=" mb-4 ">
-                <CCol sm={3}>
                   <CFormLabel className="col col-form-label ">Status</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={leave.status} type="text" />
+                  <CFormInput placeholder={leave.status} type="text" disabled />
                 </CCol>
               </CRow>
             </CForm>

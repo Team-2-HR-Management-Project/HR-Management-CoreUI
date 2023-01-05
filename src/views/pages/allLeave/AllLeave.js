@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CImage, CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findbyTokenwithAxios, userSeeDetail } from 'src/store/features/UserSlice'
-import { getAllLeaves } from 'src/store/features/LeaveSlice'
+import { getAllLeaves, rejectLeave, approveLeave } from 'src/store/features/LeaveSlice'
 
 import { Link } from 'react-router-dom'
 
@@ -40,6 +40,8 @@ const EmployeeList = () => {
   const data = useSelector((state) => state.leave.allLeaveList)
   const token = useSelector((state) => state.auth.token)
   const managerid = useSelector((state) => state.user.currentUserId)
+  const changeStatus = useSelector((state) => state.leave.changeStatus)
+
   console.log(managerid)
   const dispatch = useDispatch()
   const getUser = async () => {
@@ -52,7 +54,7 @@ const EmployeeList = () => {
 
   useEffect(() => {
     getUsers()
-  }, [data.size])
+  }, [data.size, changeStatus])
 
   return (
     <>
@@ -111,12 +113,32 @@ const EmployeeList = () => {
                         <div>{type?.status}</div>
                       </CTableDataCell>
                       <CTableDataCell>
+                        <CButton
+                          className="gap-2 m-2"
+                          shape="rounded-pill"
+                          size="sm"
+                          color="success"
+                          onClick={() => dispatch(approveLeave(type.id))}
+                        >
+                          APPROVE
+                        </CButton>
+                        <CButton
+                          className="gap-2 m-2"
+                          shape="rounded-pill"
+                          color="danger"
+                          size="sm"
+                          onClick={() => dispatch(rejectLeave(type.id))}
+                        >
+                          REJECT
+                        </CButton>
                         <Link to={`/leaves/leavedetail/${type.id}`} className="col align-self-end">
                           <CButton
-                            className="container align-self-end"
-                            style={{ backgroundColor: 'black' }}
+                            className="gap-2 m-2"
+                            shape="rounded-pill"
+                            size="sm"
+                            color="secondary"
                           >
-                            Show Details
+                            SHOW MORE
                           </CButton>
                         </Link>
                       </CTableDataCell>

@@ -11,6 +11,7 @@ const initialStateLeave = {
   otherLeaveList: [],
   leaveId: null,
   otherleaveId: null,
+  changeStatus: false,
   isLoading: false,
   error: {
     code: '',
@@ -119,12 +120,47 @@ export const seeLeaveDetails = createAsyncThunk('leave/seeLeaveDetails', async (
     const response = await axios.post(leaveService.seeleavedetails, payload, {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': true,
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
       },
     })
     return response.data
   } catch (err) {
     return err.response.data
+  }
+})
+
+export const rejectLeave = createAsyncThunk('leave/rejectLeave', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.get(leaveService.rejectleave + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
+
+export const approveLeave = createAsyncThunk('leave/approveLeave', async (payload) => {
+  try {
+    console.log(payload)
+    const response = await axios.get(leaveService.approveleave + payload, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+    })
+
+    return response.data
+  } catch (error) {
+    return error.response.data
   }
 })
 
@@ -226,6 +262,41 @@ const leaveSlice = createSlice({
       state.isLoading = false
     })
     build.addCase(seeLeaveDetails.pending, (state) => {
+      state.isLoading = true
+    })
+    build.addCase(rejectLeave.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      console.log('REJECTED')
+      if (state.changeStatus === false) {
+        state.changeStatus = true
+      } else {
+        state.changeStatus = false
+      }
+      console.log(state.changeStatus)
+
+      state.isLoading = false
+    })
+    build.addCase(rejectLeave.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(rejectLeave.pending, (state) => {
+      state.isLoading = true
+    })
+    build.addCase(approveLeave.fulfilled, (state, action) => {
+      console.log('Extra Reducer', action.payload)
+      console.log('APPROVED')
+      if (state.changeStatus === false) {
+        state.changeStatus = true
+      } else {
+        state.changeStatus = false
+      }
+      console.log(state.changeStatus)
+      state.isLoading = false
+    })
+    build.addCase(approveLeave.rejected, (state) => {
+      state.isLoading = false
+    })
+    build.addCase(approveLeave.pending, (state) => {
       state.isLoading = true
     })
   },
