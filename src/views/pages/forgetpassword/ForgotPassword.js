@@ -43,7 +43,7 @@ const ForgetPassword = () => {
   React.useEffect(() => {}, [isExist])
 
   if (isExist) {
-    return <Navigate to="/login" />
+    return <Navigate to="/createpassword" />
   } else {
     return (
       <>

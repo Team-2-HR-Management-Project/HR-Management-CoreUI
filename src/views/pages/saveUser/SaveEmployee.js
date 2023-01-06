@@ -43,7 +43,7 @@ const SaveEmployee = () => {
       alert('Please enter any surname!')
     } else if (email === '' || !email.includes('@') || !email.includes('.')) {
       alert('Please enter any email!')
-    } else if (phone === '' || phone.length < 10 || phone.length > 10) {
+    } else if (phone === '') {
       alert('Please enter any phone!')
     } else if (companyid === '' || companyid === 0) {
       alert('Please select any company!')
