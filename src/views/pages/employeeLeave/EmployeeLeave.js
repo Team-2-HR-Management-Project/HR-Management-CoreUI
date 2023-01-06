@@ -121,7 +121,7 @@ const EmployeeLeave = () => {
                         <CIcon icon={cilNotes} />
                       </CInputGroupText>
                       <CFormInput
-                        type="text"
+                        type="date"
                         id="floatingInputInvalid"
                         floatingLabel="StartDate"
                         placeholder="Start Date"
@@ -136,7 +136,7 @@ const EmployeeLeave = () => {
                         <CIcon icon={cilNotes} />
                       </CInputGroupText>
                       <CFormInput
-                        type="text"
+                        type="date"
                         id="floatingInputInvalid"
                         floatingLabel="EndDate"
                         placeholder="End Date"

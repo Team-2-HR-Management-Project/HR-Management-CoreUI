@@ -20,17 +20,23 @@ import { Link, useParams } from 'react-router-dom'
 import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
 import Loading from 'src/components/loading/Loading'
 import { findAllCompany } from 'src/store/features/companySlice'
+import { findbyTokenwithAxios } from 'src/store/features/UserSlice'
 
 const SaveEmployee = () => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [companyid, setCompanyid] = useState(0)
+  const [companyid, setCompanyid] = useState(employee.companyid)
 
+  const employee = useSelector((state) => state.user.user)
+  const token = useSelector((state) => state.auth.token)
   const data = useSelector((state) => state.company.companyList)
   const dispatch = useDispatch()
 
+  const getUser = () => {
+    dispatch(findbyTokenwithAxios({ token }))
+  }
   console.log(data)
   const getCompanies = () => {
     dispatch(findAllCompany())
@@ -63,6 +69,7 @@ const SaveEmployee = () => {
     console.log('picked' + companyid)
   }
   useEffect(() => {
+    getUser()
     getCompanies()
   }, [])
 
@@ -141,19 +148,6 @@ const SaveEmployee = () => {
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
-                      <CFormSelect
-                        aria-label="Default select example"
-                        onChange={(event) => {
-                          setCompanyid(event.target.value)
-                        }}
-                      >
-                        <option>Select any Company</option>
-                        {data.map((type, index) => (
-                          <option key={index} value={type.id}>
-                            {type.name}
-                          </option>
-                        ))}
-                      </CFormSelect>
                     </CInputGroup>
                     <CRow className="d-grid gap-3 d-md-block ">
                       <Link to={'/employee/employeelist'}>

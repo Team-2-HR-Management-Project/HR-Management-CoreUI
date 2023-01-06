@@ -19,6 +19,7 @@ import { cilBriefcase, cilLibraryAdd } from '@coreui/icons'
 
 const CompanyList = () => {
   const data = useSelector((state) => state.company.companyList)
+  const isChange = useSelector((state) => state.company.isChange)
 
   const dispatch = useDispatch()
 
@@ -28,7 +29,7 @@ const CompanyList = () => {
 
   useEffect(() => {
     getCompanies()
-  }, [data.size])
+  }, [data.size, isChange])
 
   return (
     <>

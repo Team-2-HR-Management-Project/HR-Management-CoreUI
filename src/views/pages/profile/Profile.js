@@ -33,6 +33,8 @@ const Profile = () => {
   const [identityNumber, setIdentityNumber] = useState(employee?.identityNumber)
   const [joinDate, setJoinDate] = useState(employee?.joinDate)
   const [resignDate, setResignDate] = useState(employee?.resignDate)
+  const [company, setCompany] = useState(employee?.company)
+
   const onChangePhoto = (event) => {
     const file = event.target.files[0]
     const fileReader = new FileReader()
@@ -63,6 +65,7 @@ const Profile = () => {
         identityNumber: identityNumber == null ? employee.identityNumber : identityNumber,
         joinDate: joinDate == null ? employee.joinDate : joinDate,
         resignDate: resignDate == null ? employee.resignDate : resignDate,
+        company: company == null ? employee.company : company,
       }),
     )
     // }
@@ -257,7 +260,7 @@ const Profile = () => {
                 <CCol sm={7} className=" mx-3 ">
                   <CFormInput
                     placeholder={employee?.dob == null ? 'empty' : employee.dob}
-                    type="text"
+                    type="date"
                     onChange={(e) => setDob(e.target.value)}
                   />
                 </CCol>
@@ -296,7 +299,7 @@ const Profile = () => {
                 <CCol sm={7} className=" mx-3 ">
                   <CFormInput
                     placeholder={employee?.joinDate == null ? 'empty' : employee.joinDate}
-                    type="text"
+                    type="date"
                     onChange={(e) => setJoinDate(e.target.value)}
                   />
                 </CCol>
@@ -308,7 +311,7 @@ const Profile = () => {
                 <CCol sm={7} className=" mx-3 ">
                   <CFormInput
                     placeholder={employee?.resignDate == null ? 'empty' : employee.resignDate}
-                    type="text"
+                    type="date"
                     onChange={(e) => setResignDate(e.target.value)}
                   />
                 </CCol>

@@ -8,6 +8,7 @@ import CIcon from '@coreui/icons-react'
 import { cilLibraryAdd } from '@coreui/icons'
 function CompanyTable() {
   const data = useSelector((state) => state.company.companyList)
+  const isChange = useSelector((state) => state.company.isChange)
 
   const dispatch = useDispatch()
 
@@ -17,7 +18,7 @@ function CompanyTable() {
 
   useEffect(() => {
     getCompanies()
-  }, [])
+  }, [isChange])
 
   return (
     <div className="row flex flex-wrap  ">

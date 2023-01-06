@@ -207,7 +207,7 @@ const EmployeeDetail = () => {
                   <CFormLabel className="col col-form-label">Date of Birth</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={manager?.dob} type="text" disabled />
+                  <CFormInput placeholder={manager?.dob} type="date" disabled />
                 </CCol>
               </CRow>
 
@@ -232,7 +232,7 @@ const EmployeeDetail = () => {
                   <CFormLabel className="col col-form-label">Join Date</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={manager?.joinDate} type="text" disabled />
+                  <CFormInput placeholder={manager?.joinDate} type="date" disabled />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">
@@ -240,7 +240,7 @@ const EmployeeDetail = () => {
                   <CFormLabel className="col col-form-label">Resign Date</CFormLabel>
                 </CCol>
                 <CCol sm={7} className=" mx-3 ">
-                  <CFormInput placeholder={manager?.resignDate} type="text" disabled />
+                  <CFormInput placeholder={manager?.resignDate} type="date" disabled />
                 </CCol>
               </CRow>
               <CRow className=" mb-4">

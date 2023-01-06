@@ -9,6 +9,7 @@ const initialStateCompany = {
   companyId: null,
   othercompanyId: null,
   isLoading: false,
+  isChange: false,
   error: {
     code: '',
     message: '',
@@ -98,6 +99,7 @@ const companySlice = createSlice({
       state.companyList = action.payload
       console.log('componylist', state.companyList)
       state.isLoading = false
+      state.isChange = false
     })
     build.addCase(findAllCompany.rejected, (state, action) => {
       state.error = action.payload
@@ -108,6 +110,7 @@ const companySlice = createSlice({
     })
     build.addCase(createCompany.fulfilled, (state, action) => {
       state.company = action.payload
+      state.isChange = true
       state.isLoading = false
     })
     build.addCase(createCompany.rejected, (state, action) => {
