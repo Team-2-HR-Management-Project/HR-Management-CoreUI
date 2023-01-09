@@ -17,8 +17,8 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilMap } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { forgetPassword } from 'src/store/features/AuthSlice'
-import Loading from 'src/components/loading/Loading'
+import { forgetPassword } from '../../../store/features/AuthSlice'
+import Loading from '../../../components/loading/Loading'
 const ForgetPassword = () => {
   const auth = useSelector((state) => state.auth.auth)
   const [email, setEmail] = useState('')

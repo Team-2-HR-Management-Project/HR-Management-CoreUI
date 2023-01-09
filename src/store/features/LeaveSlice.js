@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import leaveService from 'src/config/LeaveService'
+import leaveService from '../../config/LeaveService'
 
 const initialStateLeave = {
   leave: {},

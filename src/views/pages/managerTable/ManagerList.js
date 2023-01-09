@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { CImage, CButton, CCard, CCardBody } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllManagers } from 'src/store/features/UserSlice'
+import { getAllManagers } from '../../../store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 import {

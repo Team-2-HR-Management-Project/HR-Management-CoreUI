@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { CImage, CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { findbyTokenwithAxios, userSeeDetail } from 'src/store/features/UserSlice'
-import { getAllLeaves, rejectLeave, approveLeave } from 'src/store/features/LeaveSlice'
+import { findbyTokenwithAxios, userSeeDetail } from '../../../store/features/UserSlice'
+import { getAllLeaves, rejectLeave, approveLeave } from '../../../store/features/LeaveSlice'
 
 import { Link } from 'react-router-dom'
 

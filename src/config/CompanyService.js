@@ -1,12 +1,12 @@
 import RestApis from './RestApiUrls'
 
 const companyService = {
-  companycreate: RestApis.companyService + '/company/create',
-  companyupdate: RestApis.companyService + '/company/update',
-  findbyid: RestApis.companyService + '/company/findbyid/{id}',
-  findall: RestApis.companyService + '/company/findall',
-  companydetail: RestApis.companyService + '/company/seedetail/',
-  companydeletebyid: RestApis.companyService + '/company/delete/{id}',
+  companycreate: RestApis.companyService + '/create',
+  companyupdate: RestApis.companyService + '/update',
+  findbyid: RestApis.companyService + '/findbyid/{id}',
+  findall: RestApis.companyService + '/findall',
+  companydetail: RestApis.companyService + '/seedetail/',
+  companydeletebyid: RestApis.companyService + '/delete/{id}',
 }
 
 export default companyService

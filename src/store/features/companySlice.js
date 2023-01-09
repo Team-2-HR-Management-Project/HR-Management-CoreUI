@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import companyService from 'src/config/CompanyService'
+import companyService from '../../config/CompanyService'
 
 const initialStateCompany = {
   company: {},

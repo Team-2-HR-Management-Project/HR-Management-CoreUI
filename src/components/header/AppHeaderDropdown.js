@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios } from '../../store/features/UserSlice'
 import {
   CAvatar,
   CBadge,
@@ -24,7 +24,7 @@ import {
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { logout } from 'src/store/features/AuthSlice'
+import { logout } from '../../store/features/AuthSlice'
 import { Link } from 'react-router-dom'
 const AppHeaderDropdown = () => {
   const myuser = useSelector((state) => state.user.user)

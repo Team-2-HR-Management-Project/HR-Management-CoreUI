@@ -17,9 +17,9 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
-import Loading from 'src/components/loading/Loading'
-import { findAllCompany } from 'src/store/features/companySlice'
+import { fetchCreatePassword, fecthRegisterbymail } from '../../../store/features/AuthSlice'
+import Loading from '../../../components/loading/Loading'
+import { findAllCompany } from '../../../store/features/companySlice'
 
 const SaveManager = () => {
   const [name, setName] = useState('')

@@ -5,10 +5,10 @@ const leavePort = '8094'
 const version = '/api/v1'
 
 const RestApis = {
-  authService: 'http://localhost:' + authPort + version,
-  userService: 'http://localhost:' + userPort + version,
-  companyService: 'http://localhost:' + companyPort + version,
-  leaveService: 'http://localhost:' + leavePort + version,
+  authService: 'http://34.28.200.172/auth',
+  userService: 'http://34.28.200.172/user',
+  companyService: 'http://34.28.200.172/company',
+  leaveService: 'http://34.28.200.172/leave',
 }
 
 export default RestApis

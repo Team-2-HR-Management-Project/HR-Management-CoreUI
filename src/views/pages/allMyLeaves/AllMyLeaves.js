@@ -10,8 +10,8 @@ import {
   CImage,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { findbyTokenwithAxios, userSeeDetail } from 'src/store/features/UserSlice'
-import { getMyAllLeaves } from 'src/store/features/LeaveSlice'
+import { findbyTokenwithAxios, userSeeDetail } from '../../../store/features/UserSlice'
+import { getMyAllLeaves } from '../../../store/features/LeaveSlice'
 
 import { Link } from 'react-router-dom'
 

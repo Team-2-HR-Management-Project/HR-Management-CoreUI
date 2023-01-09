@@ -6,8 +6,8 @@ import CIcon from '@coreui/icons-react'
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import { logoNegative } from 'src/assets/brand/logo-negative'
-import { sygnet } from 'src/assets/brand/sygnet'
+import { logoNegative } from '../assets/brand/logo-negative'
+import { sygnet } from '../assets/brand/sygnet'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
@@ -16,7 +16,7 @@ import 'simplebar/dist/simplebar.min.css'
 import navigation from '../_navEmployee'
 import navAdmin from '../_navAdmin'
 import navManager from '../_navManager'
-import { findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios } from '../store/features/UserSlice'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()

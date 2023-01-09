@@ -13,8 +13,8 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { seeDetailLeave, updateLeave } from 'src/store/features/LeaveSlice'
-import { userSeeDetail } from 'src/store/features/UserSlice'
+import { seeDetailLeave, updateLeave } from '../../../store/features/LeaveSlice'
+import { userSeeDetail } from '../../../store/features/UserSlice'
 
 const ManagerLeaveDetail = () => {
   const { id } = useParams()

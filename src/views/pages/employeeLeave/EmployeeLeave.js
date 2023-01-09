@@ -33,8 +33,8 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { createLeave } from 'src/store/features/LeaveSlice'
-import { getAllMyManagers, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { createLeave } from '../../../store/features/LeaveSlice'
+import { getAllMyManagers, findbyTokenwithAxios } from '../../../store/features/UserSlice'
 
 const EmployeeLeave = () => {
   const dispatch = useDispatch()

@@ -16,7 +16,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { seeLeaveDetails, rejectLeave, approveLeave } from 'src/store/features/LeaveSlice'
+import { seeLeaveDetails, rejectLeave, approveLeave } from '../../../store/features/LeaveSlice'
 
 const ManagerLeaveDetail = () => {
   const { id } = useParams()

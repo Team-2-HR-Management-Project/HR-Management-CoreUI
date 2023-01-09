@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { userSeeDetail, updateUser } from 'src/store/features/UserSlice'
+import { userSeeDetail, updateUser } from '../../../store/features/UserSlice'
 
 const EmployeeDetail = () => {
   const { id } = useParams()

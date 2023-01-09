@@ -17,7 +17,7 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { createCompany, findAllCompany } from 'src/store/features/companySlice'
+import { createCompany, findAllCompany } from '../../../store/features/companySlice'
 
 const SaveCompany = () => {
   const [name, setName] = useState('')

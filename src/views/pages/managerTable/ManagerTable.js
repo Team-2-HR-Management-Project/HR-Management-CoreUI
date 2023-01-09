@@ -11,7 +11,7 @@ import {
   CContainer,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllManagers } from 'src/store/features/UserSlice'
+import { getAllManagers } from '../../../store/features/UserSlice'
 import { Link } from 'react-router-dom'
 import CIcon from '@coreui/icons-react'
 import { cilUserFollow } from '@coreui/icons'

@@ -16,8 +16,8 @@ import CIcon from '@coreui/icons-react'
 import { cilControl, cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { fetchCreatePassword, fecthRegisterbymail } from 'src/store/features/AuthSlice'
-import Loading from 'src/components/loading/Loading'
+import { fetchCreatePassword, fecthRegisterbymail } from '../../../store/features/AuthSlice'
+import Loading from '../../../components/loading/Loading'
 import { Navigate } from 'react-router-dom'
 
 const PasswordReset = () => {

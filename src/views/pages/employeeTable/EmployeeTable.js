@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CIcon from '@coreui/icons-react'
 import { cilUserFollow } from '@coreui/icons'
-import { getAllEmployees, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { getAllEmployees, findbyTokenwithAxios } from '../../../store/features/UserSlice'
 
 function EmployeeTable() {
   const data = useSelector((state) => state.user.employeeList)

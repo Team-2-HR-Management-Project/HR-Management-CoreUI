@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { companyDetail, updateCompany } from 'src/store/features/companySlice'
+import { companyDetail, updateCompany } from '../../../store/features/companySlice'
 
 const CompanyDetail = () => {
   const { id } = useParams()

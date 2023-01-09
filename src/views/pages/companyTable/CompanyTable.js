@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { findAllCompany } from 'src/store/features/companySlice'
+import { findAllCompany } from '../../../store/features/companySlice'
 import { Link } from 'react-router-dom'
 import { CCol, CRow, CContainer } from '@coreui/react'
 import CIcon from '@coreui/icons-react'

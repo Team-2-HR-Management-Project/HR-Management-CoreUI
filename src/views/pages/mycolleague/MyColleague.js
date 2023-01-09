@@ -10,7 +10,7 @@ import {
   CImage,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllColleague, findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { getAllColleague, findbyTokenwithAxios } from '../../../store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 import {

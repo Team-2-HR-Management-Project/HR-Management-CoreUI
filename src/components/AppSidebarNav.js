@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { findbyTokenwithAxios } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios } from '../store/features/UserSlice'
 import { NavLink, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 

@@ -11,7 +11,7 @@ import {
   CCol,
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllUsers } from 'src/store/features/UserSlice'
+import { getAllUsers } from '../../../store/features/UserSlice'
 import { Link } from 'react-router-dom'
 
 function EmployeeTable() {

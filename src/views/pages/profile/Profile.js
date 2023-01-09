@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { findbyTokenwithAxios, updateAllUser } from 'src/store/features/UserSlice'
+import { findbyTokenwithAxios, updateAllUser } from '../../../store/features/UserSlice'
 
 const Profile = () => {
   const dispatch = useDispatch()

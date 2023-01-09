@@ -1,11 +1,11 @@
 import RestApis from './RestApiUrls'
 
 const authService = {
-  register: RestApis.authService + '/auth/register',
-  login: RestApis.authService + '/auth/login',
-  registerbymail: RestApis.authService + '/auth/registerbymail',
-  activatebypassword: RestApis.authService + '/auth/createpassword',
-  forgetpassword: RestApis.authService + '/auth/forgetpasswordmail', //mail yazıyormus javada
+  register: RestApis.authService + '/register',
+  login: RestApis.authService + '/login',
+  registerbymail: RestApis.authService + '/registerbymail',
+  activatebypassword: RestApis.authService + '/createpassword',
+  forgetpassword: RestApis.authService + '/forgetpasswordmail', //mail yazıyormus javada
 }
 
 export default authService
