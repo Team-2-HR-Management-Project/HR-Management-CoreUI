@@ -120,8 +120,6 @@ export const seeLeaveDetails = createAsyncThunk('leave/seeLeaveDetails', async (
     const response = await axios.post(leaveService.seeleavedetails, payload, {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
       },
     })
     return response.data

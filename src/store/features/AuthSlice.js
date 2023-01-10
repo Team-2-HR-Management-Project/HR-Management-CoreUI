@@ -26,7 +26,9 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async (payload) =>
     const response = await fetch(authService.login, {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip;q=1.0, compress;q=0.5',
       },
       body: JSON.stringify(payload),
     })

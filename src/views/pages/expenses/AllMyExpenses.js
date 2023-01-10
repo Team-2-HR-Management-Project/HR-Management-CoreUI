@@ -11,7 +11,7 @@ import {
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findbyTokenwithAxios, userSeeDetail } from '../../../store/features/UserSlice'
-import { getMyAllLeaves } from '../../../store/features/LeaveSlice'
+import { getAllMyExpenses} from '../../../store/features/ExpensesSlice'
 
 import { Link } from 'react-router-dom'
 
@@ -44,8 +44,8 @@ import {
   cilUserFollow,
 } from '@coreui/icons'
 
-const EmployeeList = () => {
-  const data = useSelector((state) => state.leave.myLeaveList)
+const AllMyExpenses = () => {
+  const data = useSelector((state) => state.expenses.myExpensesList)
   const token = useSelector((state) => state.auth.token)
   const authid = useSelector((state) => state.auth.authid)
 
@@ -55,7 +55,7 @@ const EmployeeList = () => {
   }
   const getUsers = () => {
     getUser()
-    dispatch(getMyAllLeaves(authid))
+    dispatch(getMyAllExpenses(authid))
   }
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const EmployeeList = () => {
               <CContainer>
                 <CRow>
                   <CCol xs="auto" className="me-auto">
-                    <h5 className="card-title fs-4 fw-semibold m-2"> My Leaves</h5>
+                    <h5 className="card-title fs-4 fw-semibold m-2"> My Expenses</h5>
                   </CCol>
                 </CRow>
               </CContainer>
@@ -81,42 +81,39 @@ const EmployeeList = () => {
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>
-                    <CTableHeaderCell className="text-center">
-                      <CIcon icon={cilPeople} />
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Name Surname</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Leave Type</CTableHeaderCell>
-                    <CTableHeaderCell>Leave Days</CTableHeaderCell>
-                    <CTableHeaderCell>Status</CTableHeaderCell>
+                    <CTableHeaderCell>Index</CTableHeaderCell>
+                    <CTableHeaderCell>Expense Type</CTableHeaderCell>
+                    <CTableHeaderCell>Amount</CTableHeaderCell>
+                    <CTableHeaderCell>Currency</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
-                      <CTableDataCell className="text-center">
-                        <CImage
-                          className="avatar-circle-size"
-                          src={
-                            type.photo == null
-                              ? require('../../../assets/person/user.webp')
-                              : type.photo
-                          }
-                        />
-                      </CTableDataCell>
+                      
+                      <CTableDataCell>{index}</CTableDataCell>
                       <CTableDataCell>
-                        <div>
-                          {type?.name} {type?.surname}
-                        </div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
                         <div>{type?.type}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type?.days}</div>
+                        <div>{type?.amount}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{type?.status}</div>
+                        <div>{type?.currency}</div>
                       </CTableDataCell>
+                      {/* <CTableDataCell>
+                        <Link
+                          to={`/expenses/expensedetail/${type.id}`}
+                          className="col align-self-end"
+                        >
+                          <CButton
+                            className="container align-self-end"
+                            style={{ backgroundColor: 'black' }}
+                          >
+                            Show Details
+                          </CButton>
+                        </Link>
+                      </CTableDataCell> */}
                     </CTableRow>
                   ))}
                 </CTableBody>
@@ -129,4 +126,4 @@ const EmployeeList = () => {
   )
 }
 
-export default EmployeeList
+export default AllMyExpenses

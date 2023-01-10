@@ -2,7 +2,7 @@ const authPort = '8090'
 const userPort = '8091'
 const companyPort = '8093'
 const leavePort = '8094'
-const leavePort = '8092'
+const expensesPort = '8092'
 const version = '/api/v1'
 
 const RestApis = {
@@ -10,7 +10,7 @@ const RestApis = {
   userService: 'http://34.28.200.172/user',
   companyService: 'http://34.28.200.172/company',
   leaveService: 'http://34.28.200.172/leave',
-  expencesService: 'http://34.28.200.172/expences'
+  expensesService: 'http://34.28.200.172/expenses'
 }
 
 export default RestApis

@@ -34,16 +34,16 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { createExpences } from '../../../store/features/ExpencesSlice'
+import { createexpenses } from '../../../store/features/ExpensesSlice'
 import { findbyTokenwithAxios } from '../../../store/features/UserSlice'
 
-const CreateExpences = () => {
+const Createexpenses = () => {
   const dispatch = useDispatch()
   const employeeId = useSelector((state) => state.user.currentUserId)
   const authId = useSelector((state) => state.auth.authid)
   const employee = useSelector((state) => state.user.user)
   const token = useSelector((state) => state.auth.token)
-  const list = useSelector((state) => state.expences.myExpencesList)
+  const list = useSelector((state) => state.expenses.myexpensesList)
   const [amount, setAmount] = useState(0)
   const [currency, setCurrency] = useState('')
   const [bill, setBill] = useState('')
@@ -56,7 +56,7 @@ const CreateExpences = () => {
     }
     fileReader.readAsDataURL(file)
   }
-  const expencestype = ['TRANSPORTATION', 'MEAL', 'ACCOMMODATION']
+  const expensestype = ['TRANSPORTATION', 'MEAL', 'ACCOMMODATION']
 
   const getUser = () => {
     dispatch(findbyTokenwithAxios({ token }))
@@ -73,7 +73,7 @@ const CreateExpences = () => {
       alert('Please enter the leave type!')
     } else {
       dispatch(
-        createExpences({
+        createexpenses({
           authid: authId,
           amount: amount,
           employeeid: employeeId,
@@ -99,7 +99,7 @@ const CreateExpences = () => {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>Create New Expences Request</h1>
+                    <h1>Create New expenses Request</h1>
                     <p className="text-medium-emphasis">Please fill in the information...</p>
                     <CInputGroup className="mb-3">
                       <CFormInput
@@ -156,7 +156,7 @@ const CreateExpences = () => {
                         }}
                       >
                         <option>Select your leave type</option>
-                        {expencestype.map((type, index) => (
+                        {expensestype.map((type, index) => (
                           <option key={index} value={type}>
                             {type}
                           </option>
@@ -188,4 +188,4 @@ const CreateExpences = () => {
   )
 }
 
-export default CreateExpences
+export default Createexpenses
