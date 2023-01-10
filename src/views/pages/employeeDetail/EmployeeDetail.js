@@ -78,7 +78,7 @@ const EmployeeDetail = () => {
                   <CInputGroupText
                     component="label"
                     htmlFor="inputGroupFile02"
-                    placeholder="Fotoğraf Seçiniz"
+                    placeholder="Please select photo "
                   ></CInputGroupText>
                 </CInputGroup>
               </CRow>

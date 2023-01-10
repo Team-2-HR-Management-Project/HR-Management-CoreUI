@@ -26,7 +26,8 @@ const AllMyLeaves = React.lazy(() => import('./views/pages/allMyLeaves/AllMyLeav
 const AllLeaves = React.lazy(() => import('./views/pages/allLeave/AllLeave'))
 const EmployeeLeave = React.lazy(() => import('./views/pages/employeeLeave/EmployeeLeave'))
 const LeaveDetail = React.lazy(() => import('./views/pages/managerLeaveDetail/ManagerLeaveDetail'))
-
+const CreateExpenses = React.lazy(() => import('./views/pages/expences/CreateExpences'))
+const AllMyExpenses = React.lazy(() => import('./views/pages/expences/AllMyExpences'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/user/usertable', name: 'User Table', element: UserTable },
@@ -48,6 +49,9 @@ const routes = [
   { path: '/leaves/allleaves', name: 'All Leaves', element: AllLeaves },
   { path: '/leaves/createleave', name: 'Create Leaves', element: EmployeeLeave },
   { path: '/leaves/leavedetail/:id', name: 'Leave Detail', element: LeaveDetail },
+  { path: '/expenses/createexpenses', name: 'Create Expenses', element: CreateExpenses },
+  { path: '/expenses/allmyexpenses', name: 'All My Expenses', element: AllMyExpenses },
+
   {
     path: '/employee/employeedetail/:id',
     name: 'Employee Detail',

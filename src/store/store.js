@@ -1,5 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { AuthSlice, UserSlice, ManagerSlice, companySlice, LeaveSlice } from './features'
+import {
+  AuthSlice,
+  UserSlice,
+  ManagerSlice,
+  companySlice,
+  LeaveSlice,
+  ExpencesSlice,
+} from './features'
 
 const store = configureStore({
   reducer: {
@@ -8,6 +15,7 @@ const store = configureStore({
     manager: ManagerSlice,
     company: companySlice,
     leave: LeaveSlice,
+    expences: ExpencesSlice,
   },
 })
 
