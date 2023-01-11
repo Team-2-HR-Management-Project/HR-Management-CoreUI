@@ -34,7 +34,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { createexpenses } from '../../../store/features/ExpensesSlice'
+import { createExpenses } from '../../../store/features/ExpensesSlice'
 import { findbyTokenwithAxios } from '../../../store/features/UserSlice'
 
 const Createexpenses = () => {
@@ -73,7 +73,7 @@ const Createexpenses = () => {
       alert('Please enter the leave type!')
     } else {
       dispatch(
-        createexpenses({
+        createExpenses({
           authid: authId,
           amount: amount,
           employeeid: employeeId,
@@ -120,7 +120,7 @@ const Createexpenses = () => {
                         <CIcon icon={cilDollar} />
                       </CInputGroupText>
                       <CFormInput
-                        type="date"
+                        type="text"
                         id="floatingInputInvalid"
                         floatingLabel="Amount"
                         placeholder="Amount"
@@ -135,7 +135,7 @@ const Createexpenses = () => {
                         <CIcon icon={cilNotes} />
                       </CInputGroupText>
                       <CFormInput
-                        type="date"
+                        type="text"
                         id="floatingInputInvalid"
                         floatingLabel="Currency"
                         placeholder="Currency"
@@ -155,7 +155,7 @@ const Createexpenses = () => {
                           setType(event.target.value)
                         }}
                       >
-                        <option>Select your leave type</option>
+                        <option>Select your expense type</option>
                         {expensestype.map((type, index) => (
                           <option key={index} value={type}>
                             {type}

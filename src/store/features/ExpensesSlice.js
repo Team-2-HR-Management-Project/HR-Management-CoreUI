@@ -92,6 +92,11 @@ const expensesSlice = createSlice({
       state.expenses = action.payload
       state.expensesId = action.payload.id
       state.isLoading = false
+      if (state.changeStatus === false) {
+        state.changeStatus = true
+      } else {
+        state.changeStatus = false
+      }
     })
     build.addCase(seeDetailExpenses.rejected, (state) => {
       state.isLoading = false

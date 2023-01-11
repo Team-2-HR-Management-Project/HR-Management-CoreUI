@@ -11,7 +11,7 @@ import {
 } from '@coreui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { findbyTokenwithAxios, userSeeDetail } from '../../../store/features/UserSlice'
-import { getAllMyExpenses} from '../../../store/features/ExpensesSlice'
+import { getAllMyExpenses } from '../../../store/features/ExpensesSlice'
 
 import { Link } from 'react-router-dom'
 
@@ -48,6 +48,7 @@ const AllMyExpenses = () => {
   const data = useSelector((state) => state.expenses.myExpensesList)
   const token = useSelector((state) => state.auth.token)
   const authid = useSelector((state) => state.auth.authid)
+  const status = useSelector((state) => state.expenses.changeStatus)
 
   const dispatch = useDispatch()
   const getUser = async () => {
@@ -55,12 +56,12 @@ const AllMyExpenses = () => {
   }
   const getUsers = () => {
     getUser()
-    dispatch(getMyAllExpenses(authid))
+    dispatch(getAllMyExpenses(authid))
   }
 
   useEffect(() => {
     getUsers()
-  }, [data.size])
+  }, [data.size, status])
 
   return (
     <>
@@ -90,8 +91,7 @@ const AllMyExpenses = () => {
                 <CTableBody>
                   {data.map((type, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
-                      
-                      <CTableDataCell>{index}</CTableDataCell>
+                      <CTableDataCell>{index + 1}</CTableDataCell>
                       <CTableDataCell>
                         <div>{type?.type}</div>
                       </CTableDataCell>

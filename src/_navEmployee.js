@@ -12,6 +12,7 @@ import {
   cilLockLocked,
   cilMagnifyingGlass,
   cilPuzzle,
+  cilGem,
   cilSpeedometer,
   cilStar,
 } from '@coreui/icons'
@@ -64,6 +65,23 @@ const _nav = [
         component: CNavItem,
         name: 'Create Leave',
         to: '/leaves/createleave',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Expenses',
+    icon: <CIcon icon={cilGem} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Expenses List',
+        to: '/expenses/allmyexpenses',
+      },
+      {
+        component: CNavItem,
+        name: 'Create Expense',
+        to: '/expenses/createexpenses',
       },
     ],
   },

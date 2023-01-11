@@ -14,6 +14,7 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
+  cilGem,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -93,6 +94,23 @@ const _nav = [
         component: CNavItem,
         name: 'Leave List',
         to: '/leaves/allleaves',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Expenses',
+    icon: <CIcon icon={cilGem} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Expenses List',
+        to: '/expenses/allmyexpenses',
+      },
+      {
+        component: CNavItem,
+        name: 'Create Expense',
+        to: '/expenses/createexpenses',
       },
     ],
   },

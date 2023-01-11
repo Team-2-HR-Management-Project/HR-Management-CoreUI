@@ -18,7 +18,6 @@ import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
 import { AppHeaderDropdown } from './header/index'
 import { logo } from '../assets/brand/logo'
 
-
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
