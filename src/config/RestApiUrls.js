@@ -10,7 +10,7 @@ const RestApis = {
   userService: 'http://34.28.200.172/user',
   companyService: 'http://34.28.200.172/company',
   leaveService: 'http://34.28.200.172/leave',
-  expensesService: 'http://34.28.200.172/expenses'
+  expensesService: 'http://34.28.200.172/expenses',
 }
 
 export default RestApis
